@@ -1,5 +1,7 @@
 package com.example.examplemod;
 
+import com.example.examplemod.MManager.MManager;
+import com.example.examplemod.OreFinder.OreFinder;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
@@ -29,6 +31,9 @@ import org.slf4j.Logger;
 @Mod(ExampleMod.MODID)
 public class ExampleMod
 {
+	private ExampleMod instance;
+	private MManager managerInstance;	
+	
     // Define mod id in a common place for everything to reference
     public static final String MODID = "examplemod";
     // Directly reference a slf4j logger
@@ -45,6 +50,8 @@ public class ExampleMod
 
     public ExampleMod()
     {
+    	instance = this;
+    	managerInstance = new MManager();
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading
@@ -57,6 +64,10 @@ public class ExampleMod
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(managerInstance);
+        MinecraftForge.EVENT_BUS.register(managerInstance.oreFinder);
+        
+        
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
