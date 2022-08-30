@@ -1,12 +1,16 @@
 package com.example.examplemod.Renderer;
 
 import java.awt.Color;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Function;
 
+import com.example.examplemod.MManager.MManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.BufferBuilder;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
@@ -25,15 +29,20 @@ import net.minecraftforge.client.event.RenderLevelStageEvent.Stage;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class Renderer {
-
+	
+	private MManager manager;	
 	private boolean isActive;
 	private Map<Color, List<Vec3>> vertexToRender;
 	private static final Color DEFAULT_COLOR = Color.GREEN;
 	
-	public Renderer() {
+	public Renderer(MManager manager) {
+		this.manager = manager;
 		isActive = false;
 		vertexToRender = new HashMap<>();
 	}
+	//	public void addRenderFuntion(Function<Object, Object> o) {
+//		functionList.add((Function<Object, Object>) o);
+//	}
 	
 	@SubscribeEvent
 	public void render(RenderLevelStageEvent event) {
@@ -56,15 +65,18 @@ public class Renderer {
 		
 		pStack.translate(-x, -y- view.getEyeHeight(), -z);
 		
+		manager.mobTracker.trackMobs();
+		manager.oreFinder.findOre();
+		
 		doVertexRender(buffer, pStack.last().pose());
 		tess.end();
 		pStack.popPose();
 		RenderSystem.enableDepthTest();
-//		resetVertexMap();
+		resetVertexMap();
 		
 	}
 	
-	public void addRenderList(Color color, List<Vec3> vList) {
+	public synchronized void addRenderList(Color color, List<Vec3> vList) {
 		if (vertexToRender.containsKey(color)) {
 			vertexToRender.get(color).addAll(vList);
 		} else {		
@@ -140,6 +152,5 @@ public class Renderer {
 			vList.add(new Vec3(maxX, minY, maxZ));
 		
 		return vList;
-	}
-	
+	}	
 }

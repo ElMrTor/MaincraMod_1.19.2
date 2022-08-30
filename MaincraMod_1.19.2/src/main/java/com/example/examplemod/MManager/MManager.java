@@ -3,6 +3,7 @@ package com.example.examplemod.MManager;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,14 +24,15 @@ public class MManager {
 	private static final Logger LOG = LogManager.getLogger();
 	public OreFinder oreFinder;
 	public Renderer renderer;
-	public MobTracker mobTracker;
+	public MobTracker mobTracker;	
 	
 	public MManager() {
 		pressedKeys = new HashMap<>();
 		oreFinder = new OreFinder();
-		renderer = new Renderer();
-		mobTracker = new MobTracker();
+		renderer = new Renderer(this);
+		mobTracker = new MobTracker();		
 		oreFinder.setRenderer(renderer);
+		mobTracker.setRenderer(renderer);		
 	}
 	
 	@SubscribeEvent
@@ -47,6 +49,7 @@ public class MManager {
 		} else if (event.getKey() == KeyEvent.VK_P) {
 			renderer.toggleRenderer();
 			oreFinder.toggle();
+			mobTracker.toggle();
 		}
 //		Log.info("Detected key press: {}", event.toString());
 		
