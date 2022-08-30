@@ -7,7 +7,9 @@ import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.example.examplemod.MobTracker.MobTracker;
 import com.example.examplemod.OreFinder.OreFinder;
+import com.example.examplemod.Renderer.Renderer;
 
 import net.minecraftforge.client.event.InputEvent.Key;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,10 +22,15 @@ public class MManager {
 	private Map<Integer, Long> pressedKeys;	 
 	private static final Logger LOG = LogManager.getLogger();
 	public OreFinder oreFinder;
+	public Renderer renderer;
+	public MobTracker mobTracker;
 	
 	public MManager() {
 		pressedKeys = new HashMap<>();
 		oreFinder = new OreFinder();
+		renderer = new Renderer();
+		mobTracker = new MobTracker();
+		oreFinder.setRenderer(renderer);
 	}
 	
 	@SubscribeEvent
@@ -36,7 +43,12 @@ public class MManager {
 			LOG.info("Detected key press!");
 		} else if (event.getKey() == KeyEvent.VK_EQUALS) {
 			oreFinder.findOre();
+			
+		} else if (event.getKey() == KeyEvent.VK_P) {
+			renderer.toggleRenderer();
+			oreFinder.toggle();
 		}
+//		Log.info("Detected key press: {}", event.toString());
 		
 	}
 	
