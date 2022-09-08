@@ -3,7 +3,9 @@ package com.example.examplemod.OreFinder;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -20,6 +22,7 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.math.Matrix4f;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
@@ -65,16 +68,22 @@ public class OreFinder {
 	
 	private static final Logger LOG = LogManager.getLogger();
 	
-	private final int ORERANGE = 100;
+	private final int ORE_LIMIT_FOR_RENDER = 5;
+	private final int ORERANGE = 50;
 	private boolean isActive;
-	private final long DEFAULT_SEARCH_DELAY = 1000;
+	private final long DEFAULT_SEARCH_DELAY = 3000;
 	private long lastDelay;
 	private Renderer renderer;
+	private OreDistanceComparator oreComp;
 	
 	public OreFinder() {
 		isActive = false;		
 		oreMap = new HashMap<>();
+		for (Block block: TRACKORE) {
+			oreMap.put(block, new ArrayList<>());
+		}
 		lastDelay = 0;
+		oreComp = new OreDistanceComparator();
 	}
 	
 	public void setRenderer(Renderer r) {
@@ -84,9 +93,16 @@ public class OreFinder {
 	private Minecraft getGameInstance() {
 		return Minecraft.getInstance();				
 	}
+	
+	private void clearOreMap() {
+		for (ArrayList<BlockPos> list: oreMap.values()) {
+			list.clear();
+		}
+	}	
 		
 	public void findOre() {
-		if (!isActive)
+		Minecraft maincra = getGameInstance();
+		if (!isActive || maincra.level == null || maincra.player == null)
 			return;
 		if (lastDelay == 0 || lastDelay + DEFAULT_SEARCH_DELAY < System.currentTimeMillis()) 
 			lastDelay = System.currentTimeMillis();			
@@ -95,9 +111,9 @@ public class OreFinder {
 			return;			
 		}
 		
-		Minecraft maincra = getGameInstance();
-		oreMap = new HashMap<>();
-		Vec3 playerPos = maincra.player.position();
+
+		clearOreMap();
+		Vec3 playerPos = maincra.player.position();		
 		int halfRange = ORERANGE / 2;
 		
 		BlockPos playerBlockPos = new BlockPos(playerPos);		
@@ -108,27 +124,29 @@ public class OreFinder {
 			bPos = bPos.immutable();
 			Block currentBlock = maincra.level.getBlockState(bPos).getBlock();
 			
-			if (BLOCKLISTHUNT.contains(currentBlock)) {
-				if (oreMap.containsKey(currentBlock))
-					oreMap.get(currentBlock).add(bPos);
-				else {
-					oreMap.put(currentBlock, new ArrayList<>());
-					oreMap.get(currentBlock).add(bPos);
-				}
+			if (BLOCKLISTHUNT.contains(currentBlock)) {				
+					oreMap.get(currentBlock).add(bPos);				
 			}
+		}
+		for (List<BlockPos> bPosList: oreMap.values()) {
+			bPosList.sort(oreComp);
 		}
 		addOreIntoRenderer();
 	}
 	
 	private void addOreIntoRenderer() {
 		if (!(renderer == null)) {
-			for (Entry<Block, ArrayList<BlockPos>> entry: oreMap.entrySet()) {				
-				Color c = COLOR_ORE_MAP.get(entry.getKey());				
-				for (BlockPos bPos: entry.getValue()) {
-					renderer.addRenderList(c, Renderer.getVertexListFromAABB(new AABB(bPos)));
-				}
+			for (Entry<Block, ArrayList<BlockPos>> entry: oreMap.entrySet()) {
+				Color c = COLOR_ORE_MAP.get(entry.getKey());
+				int currentOreLimit = 0;
+					for (BlockPos bPos: entry.getValue()) {
+						if (currentOreLimit >= ORE_LIMIT_FOR_RENDER)
+							break;
+						renderer.addRenderList(c, Renderer.getVertexListFromAABB(new AABB(bPos)));
+						currentOreLimit++;
+				}				
 			}
-		}
+		}			
 	}
 	
 	public void activate() {
@@ -204,5 +222,14 @@ public class OreFinder {
 			
 		}
 	}
-	
+	private class OreDistanceComparator implements Comparator<BlockPos> {
+		
+		@Override
+		public int compare(BlockPos bPos0, BlockPos bPos1) {
+			LocalPlayer player = Minecraft.getInstance().player;
+			return Double.compare(player.distanceToSqr((double) bPos0.getX(), (double) bPos0.getY(), (double) bPos0.getZ()), player.distanceToSqr((double) bPos1.getX(), (double) bPos1.getY(), (double) bPos1.getZ()));
+//			return arg0.compareTo(arg1);
+		}
+		
+	}
 }

@@ -34,15 +34,21 @@ public class Renderer {
 	private boolean isActive;
 	private Map<Color, List<Vec3>> vertexToRender;
 	private static final Color DEFAULT_COLOR = Color.GREEN;
+	private List<RenderEffect> effectsToRenderList;
 	
 	public Renderer(MManager manager) {
 		this.manager = manager;
 		isActive = false;
 		vertexToRender = new HashMap<>();
+		effectsToRenderList = new ArrayList<>();
 	}
 	//	public void addRenderFuntion(Function<Object, Object> o) {
 //		functionList.add((Function<Object, Object>) o);
 //	}
+	
+	public void addRenderEffectClass(RenderEffect rEffect) {
+		effectsToRenderList.add(rEffect);
+	}
 	
 	@SubscribeEvent
 	public void render(RenderLevelStageEvent event) {
@@ -53,9 +59,12 @@ public class Renderer {
 		RenderSystem.disableDepthTest();
 		RenderSystem.setShader(GameRenderer::getPositionColorShader);
 		Tesselator tess = RenderSystem.renderThreadTesselator();
+//		Tesselator tess = Tesselator.getInstance();
 		BufferBuilder buffer = tess.getBuilder();
 		PoseStack pStack = event.getPoseStack();
 		Entity view = mc.getCameraEntity();
+		float oldLineWidth = RenderSystem.getShaderLineWidth();
+		RenderSystem.lineWidth(oldLineWidth * 50);
 				
 		pStack.pushPose();
 		// Do interpolation translation for smoothness
@@ -67,13 +76,16 @@ public class Renderer {
 		
 		manager.mobTracker.trackMobs();
 		manager.oreFinder.findOre();
+		for (RenderEffect rEffect: effectsToRenderList) {
+			rEffect.getRenderEffect();
+		}
 		
 		doVertexRender(buffer, pStack.last().pose());
 		tess.end();
 		pStack.popPose();
 		RenderSystem.enableDepthTest();
 		resetVertexMap();
-		
+		RenderSystem.lineWidth(oldLineWidth);
 	}
 	
 	public synchronized void addRenderList(Color color, List<Vec3> vList) {
@@ -90,6 +102,7 @@ public class Renderer {
 	
 	private void doVertexRender(BufferBuilder buffer, Matrix4f matrix) {
 		buffer.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
+		
 		for (Entry<Color, List<Vec3>> entry: vertexToRender.entrySet()) {
 			Color c = entry.getKey();
 			for (Vec3 v: entry.getValue()) {
