@@ -42,6 +42,9 @@ public class MobTracker implements RenderEffect {
 		put(EntityType.WITHER_SKELETON, Color.CYAN);
 		put(EntityType.SPIDER, Color.BLACK);
 		put(EntityType.SHULKER, Color.PINK);
+		put(EntityType.PIGLIN, Color.YELLOW);
+		put(EntityType.PIGLIN_BRUTE, Color.WHITE);
+		put(EntityType.ZOMBIFIED_PIGLIN, Color.BLUE);
 	}};
 	
 	

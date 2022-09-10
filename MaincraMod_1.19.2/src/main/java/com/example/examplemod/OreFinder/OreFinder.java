@@ -41,14 +41,22 @@ public class OreFinder {
 		Blocks.IRON_ORE,
 		Blocks.DIAMOND_ORE,
 		Blocks.REDSTONE_ORE,
-//		Blocks.LAPIS_BLOCK,
 		Blocks.LAPIS_ORE,
 		Blocks.EMERALD_ORE,
-//		Blocks.EMERALD_BLOCK,
 		Blocks.NETHER_QUARTZ_ORE,
 		Blocks.GOLD_ORE,		
 		Blocks.NETHERITE_BLOCK,
-		Blocks.NETHERRACK,
+		Blocks.COPPER_ORE,
+		Blocks.DEEPSLATE_IRON_ORE,
+		Blocks.DEEPSLATE_COPPER_ORE,
+		Blocks.DEEPSLATE_DIAMOND_ORE,
+		Blocks.DEEPSLATE_EMERALD_ORE,
+		Blocks.DEEPSLATE_GOLD_ORE,
+		Blocks.DEEPSLATE_LAPIS_ORE,
+		Blocks.DEEPSLATE_REDSTONE_ORE,
+		Blocks.COAL_ORE,
+		Blocks.DEEPSLATE_COAL_ORE,		
+		Blocks.ANCIENT_DEBRIS,
 	};
 	
 	private final HashMap<Block, Color> COLOR_ORE_MAP = new HashMap<>() {{
@@ -60,7 +68,17 @@ public class OreFinder {
 		put(TRACKORE[5], Color.GRAY);
 		put(TRACKORE[6], Color.YELLOW);
 		put(TRACKORE[7], Color.PINK);
-		put(TRACKORE[8], Color.WHITE);
+		put(TRACKORE[8], Color.ORANGE);
+		put(TRACKORE[9], Color.GRAY);
+		put(TRACKORE[10], Color.ORANGE);
+		put(TRACKORE[11], Color.CYAN);
+		put(TRACKORE[12], Color.GREEN);
+		put(TRACKORE[13], Color.YELLOW);
+		put(TRACKORE[14], Color.BLUE);
+		put(TRACKORE[15], Color.RED);
+		put(TRACKORE[16], Color.BLACK);
+		put(TRACKORE[17], Color.BLACK);
+		put(TRACKORE[18], Color.CYAN);
 	}};
 	
 	private final ArrayList<Block> BLOCKLISTHUNT = new ArrayList<>(Arrays.asList(TRACKORE));

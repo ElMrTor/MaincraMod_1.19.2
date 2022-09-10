@@ -47,6 +47,7 @@ public class MManager {
 			// Do something
 			LOG.info("Detected key press!");
 			autoAttack.attackAllNearbyMonsters();
+			autoAttack.clearDumbGrass();
 		} else if (event.getKey() == KeyEvent.VK_EQUALS) {
 			renderer.toggleRenderer();
 			
