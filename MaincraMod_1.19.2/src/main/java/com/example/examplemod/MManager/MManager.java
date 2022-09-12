@@ -6,11 +6,13 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.lwjgl.glfw.GLFW;
 
 import com.example.examplemod.MobTracker.MobTracker;
 import com.example.examplemod.OreFinder.OreFinder;
 import com.example.examplemod.Renderer.Renderer;
 import com.example.examplemod.autoattacker.AutoAttacker;
+import com.mojang.blaze3d.platform.InputConstants;
 
 import net.minecraftforge.client.event.InputEvent.Key;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -40,27 +42,30 @@ public class MManager {
 	
 	@SubscribeEvent
 	public void checkKey(Key event) {
+		if (event.getAction() != InputConstants.PRESS)
+			return;
 		if (!checkKeyPressTimer(event.getKey())) {			
 			return;
-		}
+		}		
 		if (event.getKey() == KeyEvent.VK_R) {
 			// Do something
 			LOG.info("Detected key press!");
 			autoAttack.attackAllNearbyMonsters();
 			autoAttack.clearDumbGrass();
-		} else if (event.getKey() == KeyEvent.VK_EQUALS) {
-			renderer.toggleRenderer();
-			
-		} else if (event.getKey() == KeyEvent.VK_P) {
-//			renderer.toggleRenderer();
-//			oreFinder.toggle();
+		} else if (event.getKey() == KeyEvent.VK_EQUALS && isAltPressed(event)) {
+			renderer.toggle();			
+		} else if (event.getKey() == KeyEvent.VK_P && isAltPressed(event)) {
 			mobTracker.toggle();
-		} else if (event.getKey() == KeyEvent.VK_O) {
+		} else if (event.getKey() == KeyEvent.VK_O && isAltPressed(event)) {
 			oreFinder.toggle();
 			
 		}
 //		Log.info("Detected key press: {}", event.toString());
 		
+	}
+	
+	public boolean isAltPressed(Key event) {
+		return (event.getModifiers() & GLFW.GLFW_MOD_ALT) == GLFW.GLFW_MOD_ALT;
 	}
 	
 	private boolean checkKeyPressTimer(int key) {

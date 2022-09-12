@@ -49,6 +49,7 @@
   },
   "minecraft:adventure/kill_all_mobs": {
     "criteria": {
+      "minecraft:skeleton": "2022-09-12 09:58:40 -0400",
       "minecraft:zombie": "2022-09-09 16:19:18 -0400"
     },
     "done": false
@@ -105,12 +106,20 @@
     "criteria": {
       "minecraft:river": "2022-08-29 21:01:44 -0400",
       "minecraft:stony_shore": "2022-08-29 23:15:11 -0400",
+      "minecraft:grove": "2022-09-12 09:29:37 -0400",
+      "minecraft:jagged_peaks": "2022-09-11 17:59:05 -0400",
       "minecraft:forest": "2022-08-29 21:01:35 -0400",
       "minecraft:ocean": "2022-08-30 00:02:19 -0400",
       "minecraft:meadow": "2022-08-29 21:01:00 -0400",
       "minecraft:plains": "2022-08-29 21:01:36 -0400"
     },
     "done": false
+  },
+  "minecraft:recipes/misc/bone_meal": {
+    "criteria": {
+      "has_bone": "2022-09-12 09:58:43 -0400"
+    },
+    "done": true
   },
   "minecraft:recipes/misc/diamond_from_blasting_diamond_ore": {
     "criteria": {
@@ -241,6 +250,12 @@
   "minecraft:recipes/transportation/jungle_boat": {
     "criteria": {
       "in_water": "2022-08-29 21:01:43 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/yellow_dye_from_dandelion": {
+    "criteria": {
+      "has_dandelion": "2022-09-12 09:29:25 -0400"
     },
     "done": true
   },
