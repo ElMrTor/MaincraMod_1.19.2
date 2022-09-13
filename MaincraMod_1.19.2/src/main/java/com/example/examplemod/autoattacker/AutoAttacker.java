@@ -56,6 +56,8 @@ public class AutoAttacker {
 	
 	public void clearDumbGrass() {
 		Minecraft mc = Minecraft.getInstance();
+		if (mc.level == null || mc.player == null)
+			return;
 		Vec3 playerPos = mc.player.position();		
 		int halfRange = 10 / 2;		
 		Level level = mc.level;
