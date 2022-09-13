@@ -1,0 +1,11 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:dripstone_caves": "2022-09-12 20:58:37 -0400",
+      "minecraft:meadow": "2022-09-12 20:58:50 -0400",
+      "minecraft:plains": "2022-09-12 20:58:56 -0400"
+    },
+    "done": false
+  },
+  "DataVersion": 3120
+}

@@ -9,82 +9,54 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import com.example.examplemod.Renderer.Renderer;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.Tesselator;
-import com.mojang.blaze3d.vertex.VertexFormat;
-import com.mojang.math.Matrix4f;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.client.event.RenderLevelStageEvent;
-import net.minecraftforge.client.event.RenderLevelStageEvent.Stage;
 
 
 
 public class OreFinder {
+	
+	public static final Color BROWN = new Color(51, 25, 0);
 
-	private final Block[] TRACKORE = {
-		Blocks.IRON_ORE,
-		Blocks.DIAMOND_ORE,
-		Blocks.REDSTONE_ORE,
-		Blocks.LAPIS_ORE,
-		Blocks.EMERALD_ORE,
-		Blocks.NETHER_QUARTZ_ORE,
-		Blocks.GOLD_ORE,		
-		Blocks.NETHERITE_BLOCK,
-		Blocks.COPPER_ORE,
-		Blocks.DEEPSLATE_IRON_ORE,
-		Blocks.DEEPSLATE_COPPER_ORE,
-		Blocks.DEEPSLATE_DIAMOND_ORE,
-		Blocks.DEEPSLATE_EMERALD_ORE,
-		Blocks.DEEPSLATE_GOLD_ORE,
-		Blocks.DEEPSLATE_LAPIS_ORE,
-		Blocks.DEEPSLATE_REDSTONE_ORE,
-		Blocks.COAL_ORE,
-		Blocks.DEEPSLATE_COAL_ORE,		
-		Blocks.ANCIENT_DEBRIS,
-	};
 	
 	private final HashMap<Block, Color> COLOR_ORE_MAP = new HashMap<>() {{
-		put(TRACKORE[0], Color.GRAY);
-		put(TRACKORE[1], Color.CYAN);
-		put(TRACKORE[2], Color.RED);		
-		put(TRACKORE[3], Color.BLUE);
-		put(TRACKORE[4], Color.GREEN);
-		put(TRACKORE[5], Color.GRAY);
-		put(TRACKORE[6], Color.YELLOW);
-		put(TRACKORE[7], Color.PINK);
-		put(TRACKORE[8], Color.ORANGE);
-		put(TRACKORE[9], Color.GRAY);
-		put(TRACKORE[10], Color.ORANGE);
-		put(TRACKORE[11], Color.CYAN);
-		put(TRACKORE[12], Color.GREEN);
-		put(TRACKORE[13], Color.YELLOW);
-		put(TRACKORE[14], Color.BLUE);
-		put(TRACKORE[15], Color.RED);
-		put(TRACKORE[16], Color.BLACK);
-		put(TRACKORE[17], Color.BLACK);
-		put(TRACKORE[18], Color.CYAN);
+		put(Blocks.IRON_ORE, Color.GRAY);
+		put(Blocks.DIAMOND_ORE, Color.CYAN);
+		put(Blocks.REDSTONE_ORE, Color.RED);		
+		put(Blocks.LAPIS_ORE, Color.BLUE);
+		put(Blocks.EMERALD_ORE, Color.GREEN);
+		put(Blocks.NETHER_QUARTZ_ORE, Color.GRAY);
+		put(Blocks.GOLD_ORE, Color.YELLOW);
+		put(Blocks.NETHERITE_BLOCK, Color.PINK);
+		put(Blocks.COPPER_ORE, BROWN);
+		put(Blocks.DEEPSLATE_IRON_ORE, Color.GRAY);
+		put(Blocks.DEEPSLATE_COPPER_ORE, BROWN);
+		put(Blocks.DEEPSLATE_DIAMOND_ORE, Color.CYAN);
+		put(Blocks.DEEPSLATE_EMERALD_ORE, Color.GREEN);
+		put(Blocks.DEEPSLATE_GOLD_ORE, Color.YELLOW);
+		put(Blocks.DEEPSLATE_LAPIS_ORE, Color.BLUE);
+		put(Blocks.DEEPSLATE_REDSTONE_ORE, Color.RED);
+		put(Blocks.COAL_ORE, Color.BLACK);
+		put(Blocks.DEEPSLATE_COAL_ORE, Color.BLACK);
+		put(Blocks.ANCIENT_DEBRIS, Color.CYAN);
+		put(Blocks.CHEST, BROWN);
+		put(Blocks.TRAPPED_CHEST, BROWN);
 	}};
 	
-	private final ArrayList<Block> BLOCKLISTHUNT = new ArrayList<>(Arrays.asList(TRACKORE));
+	private final ArrayList<Block> BLOCKLISTHUNT = new ArrayList<>(Arrays.asList(COLOR_ORE_MAP.keySet().toArray(new Block[0])));
 	private Map<Block, ArrayList<BlockPos>> oreMap;
 	
-	private static final Logger LOG = LogManager.getLogger();
+//	private static final Logger LOG = LogManager.getLogger();
 	
 	private final int ORE_LIMIT_FOR_RENDER = 5;
 	private final int ORERANGE = 50;
@@ -97,7 +69,7 @@ public class OreFinder {
 	public OreFinder() {
 		isActive = false;		
 		oreMap = new HashMap<>();
-		for (Block block: TRACKORE) {
+		for (Block block: COLOR_ORE_MAP.keySet()) {
 			oreMap.put(block, new ArrayList<>());
 		}
 		lastDelay = 0;
@@ -117,7 +89,7 @@ public class OreFinder {
 			list.clear();
 		}
 	}	
-		
+	
 	public void findOre() {
 		Minecraft maincra = getGameInstance();
 		if (!isActive || maincra.level == null || maincra.player == null)
@@ -179,74 +151,13 @@ public class OreFinder {
 		isActive = !isActive;
 	}
 	
-//	@SubscribeEvent
-	public void drawOres(RenderLevelStageEvent event) {
-		Minecraft mc = getGameInstance();
-		if (mc.level == null)
-			return;
-		
-		if (event.getStage().equals(Stage.AFTER_PARTICLES)) {
-			RenderSystem.disableDepthTest();			
-			RenderSystem.setShader(GameRenderer::getPositionColorShader);
-			Tesselator tesselator = RenderSystem.renderThreadTesselator();
-//			Tesselator tesselator = Tesselator.getInstance();		
-			BufferBuilder buffer = tesselator.getBuilder();
-			
-			PoseStack matrixStack = event.getPoseStack();
-			matrixStack.pushPose();
-			Vec3 pPos = mc.player.position();
-			
-			Entity view = mc.getCameraEntity();
-			// Iterpolation
-			double d0 = view.xOld + (view.getX() - view.xOld) * event.getPartialTick();
-			double d1 = (view.yOld + (view.getY() - view.yOld) * event.getPartialTick()) - view.getEyeHeight();
-			double d2 = view.zOld + (view.getZ() - view.zOld) * event.getPartialTick();
-			
-//			matrixStack.translate(-pPos.x, -pPos.y - mc.player.getEyeHeight(), -pPos.z);
-			matrixStack.translate(-d0, -d1 , -d2);
-			
-			Matrix4f matrix = matrixStack.last().pose();
-			buffer.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
-			
-			for (Entry<Block, ArrayList<BlockPos>> entry: oreMap.entrySet()) {
-
-				for (BlockPos bPos: entry.getValue()) {
-					var box = new AABB(bPos);					
-					
-//					LevelRenderer.renderLineBox(buffer, box.minX, box.minY, box.minZ, box.maxX, box.maxY, box.maxZ, r, g, b, a);
-					
-					buffer.vertex(matrix, (float) box.minX, (float) box.minY, (float) box.minZ).color(Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), Color.GREEN.getAlpha()).endVertex();
-					buffer.vertex(matrix, (float) box.minX, (float) box.maxY, (float) box.minZ).color(Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), Color.GREEN.getAlpha()).endVertex();
-					
-					buffer.vertex(matrix, (float) box.minX, (float) box.maxY, (float) box.minZ).color(Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), Color.GREEN.getAlpha()).endVertex();
-					buffer.vertex(matrix, (float) box.maxX, (float) box.maxY, (float) box.minZ).color(Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), Color.GREEN.getAlpha()).endVertex();
-					
-					buffer.vertex(matrix, (float) box.maxX, (float) box.maxY, (float) box.minZ).color(Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), Color.GREEN.getAlpha()).endVertex();
-					buffer.vertex(matrix, (float) box.maxX, (float) box.minY, (float) box.minZ).color(Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), Color.GREEN.getAlpha()).endVertex();
-					
-					buffer.vertex(matrix, (float) box.maxX, (float) box.minY, (float) box.minZ).color(Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), Color.GREEN.getAlpha()).endVertex();
-					buffer.vertex(matrix, (float) box.minX, (float) box.minY, (float) box.minZ).color(Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), Color.GREEN.getAlpha()).endVertex();			
-					
-					
-				}
-			}		
-//			buffer.vertex(matrix, 0, -20, 0).color(Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), Color.GREEN.getAlpha()).endVertex();
-//			buffer.vertex(matrix, 10, 20, 10).color(Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), Color.GREEN.getAlpha()).endVertex();
-			matrixStack.translate(0,  0,  0);
-			tesselator.end();
-			matrixStack.popPose();	
-					
-			RenderSystem.enableDepthTest();
-			
-		}
-	}
 	private class OreDistanceComparator implements Comparator<BlockPos> {
 		
 		@Override
 		public int compare(BlockPos bPos0, BlockPos bPos1) {
-			LocalPlayer player = Minecraft.getInstance().player;
+			Minecraft mc = Minecraft.getInstance();
+			LocalPlayer player = mc.player;
 			return Double.compare(player.distanceToSqr((double) bPos0.getX(), (double) bPos0.getY(), (double) bPos0.getZ()), player.distanceToSqr((double) bPos1.getX(), (double) bPos1.getY(), (double) bPos1.getZ()));
-//			return arg0.compareTo(arg1);
 		}
 		
 	}

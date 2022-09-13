@@ -11,27 +11,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/misc/gold_ingot_from_smelting_deepslate_gold_ore": {
-    "criteria": {
-      "has_deepslate_gold_ore": "2022-09-08 19:14:30 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/transportation/dark_oak_boat": {
-    "criteria": {
-      "in_water": "2022-08-29 21:01:43 -0400"
-    },
-    "done": true
-  },
   "minecraft:recipes/misc/lapis_lazuli_from_blasting_lapis_ore": {
     "criteria": {
       "has_lapis_ore": "2022-08-31 21:12:35 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/diamond_from_blasting_deepslate_diamond_ore": {
-    "criteria": {
-      "has_deepslate_diamond_ore": "2022-09-08 19:14:21 -0400"
     },
     "done": true
   },
@@ -41,28 +23,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/food/cake": {
-    "criteria": {
-      "has_egg": "2022-09-01 11:07:23 -0400"
-    },
-    "done": true
-  },
-  "minecraft:adventure/kill_all_mobs": {
-    "criteria": {
-      "minecraft:skeleton": "2022-09-12 09:58:40 -0400",
-      "minecraft:zombie": "2022-09-09 16:19:18 -0400"
-    },
-    "done": false
-  },
   "minecraft:recipes/misc/gold_ingot_from_smelting_gold_ore": {
     "criteria": {
       "has_gold_ore": "2022-08-31 21:12:27 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/iron_ingot_from_blasting_iron_ore": {
-    "criteria": {
-      "has_iron_ore": "2022-08-31 21:12:16 -0400"
     },
     "done": true
   },
@@ -72,27 +35,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/redstone/redstone_from_blasting_deepslate_redstone_ore": {
-    "criteria": {
-      "has_deepslate_redstone_ore": "2022-09-08 19:14:31 -0400"
-    },
-    "done": true
-  },
   "minecraft:recipes/misc/iron_ingot_from_blasting_deepslate_iron_ore": {
     "criteria": {
       "has_deepslate_iron_ore": "2022-09-08 19:14:27 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/iron_ingot_from_smelting_iron_ore": {
-    "criteria": {
-      "has_iron_ore": "2022-08-31 21:12:16 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/lapis_lazuli_from_smelting_lapis_ore": {
-    "criteria": {
-      "has_lapis_ore": "2022-08-31 21:12:35 -0400"
     },
     "done": true
   },
@@ -104,20 +49,39 @@
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
+      "minecraft:old_growth_pine_taiga": "2022-09-12 20:56:14 -0400",
+      "minecraft:taiga": "2022-09-12 20:24:16 -0400",
+      "minecraft:frozen_river": "2022-09-12 20:27:01 -0400",
+      "minecraft:sunflower_plains": "2022-09-12 20:22:42 -0400",
+      "minecraft:birch_forest": "2022-09-12 20:25:11 -0400",
+      "minecraft:beach": "2022-09-12 20:21:36 -0400",
+      "minecraft:dark_forest": "2022-09-12 20:21:40 -0400",
       "minecraft:river": "2022-08-29 21:01:44 -0400",
       "minecraft:stony_shore": "2022-08-29 23:15:11 -0400",
+      "minecraft:snowy_plains": "2022-09-12 20:27:00 -0400",
+      "minecraft:dripstone_caves": "2022-09-12 20:21:04 -0400",
+      "minecraft:snowy_taiga": "2022-09-12 20:54:05 -0400",
       "minecraft:grove": "2022-09-12 09:29:37 -0400",
       "minecraft:jagged_peaks": "2022-09-11 17:59:05 -0400",
+      "minecraft:cold_ocean": "2022-09-12 20:27:37 -0400",
       "minecraft:forest": "2022-08-29 21:01:35 -0400",
+      "minecraft:deep_cold_ocean": "2022-09-12 20:52:45 -0400",
+      "minecraft:ice_spikes": "2022-09-12 20:27:19 -0400",
+      "minecraft:frozen_ocean": "2022-09-12 20:27:04 -0400",
+      "minecraft:deep_frozen_ocean": "2022-09-12 20:53:45 -0400",
       "minecraft:ocean": "2022-08-30 00:02:19 -0400",
+      "minecraft:snowy_beach": "2022-09-12 20:27:03 -0400",
+      "minecraft:flower_forest": "2022-09-12 20:22:36 -0400",
+      "minecraft:old_growth_birch_forest": "2022-09-12 20:21:35 -0400",
       "minecraft:meadow": "2022-08-29 21:01:00 -0400",
+      "minecraft:windswept_gravelly_hills": "2022-09-12 20:23:52 -0400",
       "minecraft:plains": "2022-08-29 21:01:36 -0400"
     },
     "done": false
   },
-  "minecraft:recipes/misc/bone_meal": {
+  "minecraft:adventure/sleep_in_bed": {
     "criteria": {
-      "has_bone": "2022-09-12 09:58:43 -0400"
+      "slept_in_bed": "2022-09-12 20:23:34 -0400"
     },
     "done": true
   },
@@ -130,18 +94,6 @@
   "minecraft:recipes/misc/emerald_from_blasting_deepslate_emerald_ore": {
     "criteria": {
       "has_deepslate_emerald_ore": "2022-09-08 19:14:33 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/emerald_from_smelting_emerald_ore": {
-    "criteria": {
-      "has_emerald_ore": "2022-08-31 21:12:33 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/emerald_from_blasting_emerald_ore": {
-    "criteria": {
-      "has_emerald_ore": "2022-08-31 21:12:33 -0400"
     },
     "done": true
   },
@@ -175,9 +127,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/misc/diamond_from_smelting_deepslate_diamond_ore": {
+  "minecraft:end/elytra": {
     "criteria": {
-      "has_deepslate_diamond_ore": "2022-09-08 19:14:21 -0400"
+      "elytra": "2022-09-12 20:17:59 -0400"
     },
     "done": true
   },
@@ -193,45 +145,9 @@
     },
     "done": true
   },
-  "minecraft:recipes/transportation/oak_boat": {
-    "criteria": {
-      "in_water": "2022-08-29 21:01:43 -0400"
-    },
-    "done": true
-  },
   "minecraft:recipes/misc/copper_ingot_from_smelting_deepslate_copper_ore": {
     "criteria": {
       "has_deepslate_copper_ore": "2022-09-08 19:14:28 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/gold_ingot_from_blasting_deepslate_gold_ore": {
-    "criteria": {
-      "has_deepslate_gold_ore": "2022-09-08 19:14:30 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/redstone/redstone_from_blasting_redstone_ore": {
-    "criteria": {
-      "has_redstone_ore": "2022-08-31 21:12:30 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/food/cooked_porkchop_from_smoking": {
-    "criteria": {
-      "has_porkchop": "2022-08-30 00:03:18 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/redstone/redstone_from_smelting_redstone_ore": {
-    "criteria": {
-      "has_redstone_ore": "2022-08-31 21:12:30 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/food/cooked_porkchop": {
-    "criteria": {
-      "has_porkchop": "2022-08-30 00:03:18 -0400"
     },
     "done": true
   },
@@ -262,6 +178,133 @@
   "minecraft:recipes/transportation/spruce_boat": {
     "criteria": {
       "in_water": "2022-08-29 21:01:43 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gold_ingot_from_smelting_deepslate_gold_ore": {
+    "criteria": {
+      "has_deepslate_gold_ore": "2022-09-08 19:14:30 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/dark_oak_boat": {
+    "criteria": {
+      "in_water": "2022-08-29 21:01:43 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/diamond_from_blasting_deepslate_diamond_ore": {
+    "criteria": {
+      "has_deepslate_diamond_ore": "2022-09-08 19:14:21 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cake": {
+    "criteria": {
+      "has_egg": "2022-09-01 11:07:23 -0400"
+    },
+    "done": true
+  },
+  "minecraft:adventure/kill_all_mobs": {
+    "criteria": {
+      "minecraft:skeleton": "2022-09-12 09:58:40 -0400",
+      "minecraft:zombie": "2022-09-09 16:19:18 -0400"
+    },
+    "done": false
+  },
+  "minecraft:recipes/misc/iron_ingot_from_blasting_iron_ore": {
+    "criteria": {
+      "has_iron_ore": "2022-08-31 21:12:16 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/redstone_from_blasting_deepslate_redstone_ore": {
+    "criteria": {
+      "has_deepslate_redstone_ore": "2022-09-08 19:14:31 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_ingot_from_smelting_iron_ore": {
+    "criteria": {
+      "has_iron_ore": "2022-08-31 21:12:16 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/lapis_lazuli_from_smelting_lapis_ore": {
+    "criteria": {
+      "has_lapis_ore": "2022-08-31 21:12:35 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/bone_meal": {
+    "criteria": {
+      "has_bone": "2022-09-12 09:58:43 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/copper_ingot_from_blasting_copper_ore": {
+    "criteria": {
+      "has_copper_ore": "2022-09-12 20:47:58 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/emerald_from_smelting_emerald_ore": {
+    "criteria": {
+      "has_emerald_ore": "2022-08-31 21:12:33 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/emerald_from_blasting_emerald_ore": {
+    "criteria": {
+      "has_emerald_ore": "2022-08-31 21:12:33 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/diamond_from_smelting_deepslate_diamond_ore": {
+    "criteria": {
+      "has_deepslate_diamond_ore": "2022-09-08 19:14:21 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/copper_ingot_from_smelting_copper_ore": {
+    "criteria": {
+      "has_copper_ore": "2022-09-12 20:47:58 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/oak_boat": {
+    "criteria": {
+      "in_water": "2022-08-29 21:01:43 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gold_ingot_from_blasting_deepslate_gold_ore": {
+    "criteria": {
+      "has_deepslate_gold_ore": "2022-09-08 19:14:30 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/redstone_from_blasting_redstone_ore": {
+    "criteria": {
+      "has_redstone_ore": "2022-08-31 21:12:30 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_porkchop_from_smoking": {
+    "criteria": {
+      "has_porkchop": "2022-08-30 00:03:18 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/redstone_from_smelting_redstone_ore": {
+    "criteria": {
+      "has_redstone_ore": "2022-08-31 21:12:30 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cooked_porkchop": {
+    "criteria": {
+      "has_porkchop": "2022-08-30 00:03:18 -0400"
     },
     "done": true
   },

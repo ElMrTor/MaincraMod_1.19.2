@@ -1,0 +1,15 @@
+{
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:beach": "2022-09-12 21:00:11 -0400",
+      "minecraft:dark_forest": "2022-09-12 21:01:20 -0400",
+      "minecraft:river": "2022-09-12 21:00:32 -0400",
+      "minecraft:swamp": "2022-09-12 21:00:36 -0400",
+      "minecraft:forest": "2022-09-12 21:00:16 -0400",
+      "minecraft:windswept_savanna": "2022-09-12 20:59:56 -0400",
+      "minecraft:plains": "2022-09-12 21:00:31 -0400"
+    },
+    "done": false
+  },
+  "DataVersion": 3120
+}
