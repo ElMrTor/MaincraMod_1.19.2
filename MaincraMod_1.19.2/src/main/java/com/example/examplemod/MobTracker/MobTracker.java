@@ -42,8 +42,8 @@ public class MobTracker implements RenderEffect {
 		put(EntityType.WITHER_SKELETON, Color.CYAN);
 		put(EntityType.SPIDER, Color.BLACK);
 		put(EntityType.SHULKER, Color.PINK);
-		put(EntityType.PIGLIN, Color.YELLOW);
-		put(EntityType.PIGLIN_BRUTE, Color.WHITE);
+		put(EntityType.PIGLIN, Color.GREEN);
+		put(EntityType.PIGLIN_BRUTE, Color.PINK);
 		put(EntityType.ZOMBIFIED_PIGLIN, Color.BLUE);
 	}};
 	
@@ -83,7 +83,7 @@ public class MobTracker implements RenderEffect {
 			Color entityColor = ENTITY_TYPE_COLOR_MAP.getOrDefault(entry.getKey(), DEFAULT_MOB_MONSTER_COLOR);
 			if (entry.getKey().getCategory() == MobCategory.CREATURE)
 				entityColor = DEFAULT_MOB_CREATURE_COLOR;
-			for (AABB bBox: entry.getValue()) {
+			for (AABB bBox: entry.getValue()) {				
 				renderer.addRenderList(entityColor, Renderer.getVertexListFromAABB(bBox));
 			}
 		}
@@ -94,13 +94,12 @@ public class MobTracker implements RenderEffect {
 		for (LivingEntity lEntity: entityList) {
 			if (lEntity.getType().getCategory() == MobCategory.MONSTER || lEntity.getType().getCategory() == MobCategory.CREATURE) {			
 				if (!entityMap.containsKey(lEntity.getType()))
-					entityMap.put(lEntity.getType(), new ArrayList<>());
+					entityMap.put(lEntity.getType(), new ArrayList<>());				
 				
 				entityMap.get(lEntity.getType()).add(lEntity.getBoundingBox());
 			}
 		}
 		return entityMap;
-//		List<LivingEntity>
 	}
 	
 	@Override
@@ -108,20 +107,5 @@ public class MobTracker implements RenderEffect {
 		
 	}
 	
-//	private class EntityFilter<T> implements Predicate<T> {
-//		
-//		private final float DISTANCE_FILTER = 100;
-//		@Override
-//		public boolean apply(T input) {
-//			if (!(input instanceof LivingEntity)) 
-//				return false;
-//			else {
-//				Minecraft mc = Minecraft.getInstance();
-//				LivingEntity ent = (LivingEntity) input;
-//				return ent.distanceTo(mc.player) <= DISTANCE_FILTER;
-//			}
-//		}
-//		
-//	} 
-	
+
 }

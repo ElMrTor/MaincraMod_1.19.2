@@ -1,103 +1,204 @@
-[13Sep2022 10:48:49.573] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 1.19, --assetsDir, C:\Users\Hector\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 43.1.1, --fml.mcVersion, 1.19.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220805.130853]
-[13Sep2022 10:48:49.595] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.8+10.0.8+main.0ef7e830 starting: java version 17.0.4.1 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
-[13Sep2022 10:48:49.771] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Hector/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23120!/ Service=ModLauncher Env=CLIENT
-[13Sep2022 10:48:50.119] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Hector\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.19.2-43.1.1\4ed0d46c3cd0883da364ee1aace4f012ab07f408\javafmllanguage-1.19.2-43.1.1.jar is missing mods.toml file
-[13Sep2022 10:48:50.123] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Hector\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.19.2-43.1.1\f185fdcfb9aa2db13cb366d80f6902bb29b10437\lowcodelanguage-1.19.2-43.1.1.jar is missing mods.toml file
-[13Sep2022 10:48:50.127] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Hector\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.19.2-43.1.1\5c1fbe775a983c4f8bdba7b491644b50b619f11d\mclanguage-1.19.2-43.1.1.jar is missing mods.toml file
-[13Sep2022 10:48:50.131] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Hector\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.19.2-43.1.1\4108eba77f38a55539813fecb638eeccf7fd6314\fmlcore-1.19.2-43.1.1.jar is missing mods.toml file
-[13Sep2022 10:48:50.235] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[13Sep2022 10:48:51.288] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\Hector\.gradle\caches\forge_gradle\assets, --assetIndex, 1.19]
-[13Sep2022 10:48:54.833] [pool-3-thread-1/INFO] [net.minecraft.util.datafix.DataFixers/]: Building unoptimized datafixer
-[13Sep2022 10:48:56.318] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/C:/Users/Hector/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.1.1_mapped_official_1.19.2/forge-1.19.2-43.1.1_mapped_official_1.19.2-recomp.jar%23183!/assets/.mcassetsroot' uses unexpected schema
-[13Sep2022 10:48:56.318] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/C:/Users/Hector/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.1.1_mapped_official_1.19.2/forge-1.19.2-43.1.1_mapped_official_1.19.2-recomp.jar%23183!/data/.mcassetsroot' uses unexpected schema
-[13Sep2022 10:48:56.340] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[13Sep2022 10:48:56.344] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
-[13Sep2022 10:48:56.451] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
-[13Sep2022 10:48:57.009] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 43.1.1, for MC 1.19.2 with MCP 20220805.130853
-[13Sep2022 10:48:57.010] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v43.1.1 Initialized
-[13Sep2022 10:48:57.946] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [examplemod]
-[13Sep2022 10:48:58.051] [Render thread/INFO] [com.mojang.text2speech.NarratorWindows/]: Narrator library for x64 successfully loaded
-[13Sep2022 10:48:58.090] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: Default, Mod Resources
-[13Sep2022 10:48:58.114] [Worker-Main-1/INFO] [com.example.examplemod.ExampleMod/]: HELLO FROM COMMON SETUP
-[13Sep2022 10:48:58.115] [Worker-Main-1/INFO] [com.example.examplemod.ExampleMod/]: DIRT BLOCK >> minecraft:dirt
-[13Sep2022 10:48:58.348] [Worker-Main-2/INFO] [com.example.examplemod.ExampleMod/]: HELLO FROM CLIENT SETUP
-[13Sep2022 10:48:58.348] [Worker-Main-2/INFO] [com.example.examplemod.ExampleMod/]: MINECRAFT NAME >> Dev
-[13Sep2022 10:48:58.668] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
-[13Sep2022 10:48:59.436] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: UP_TO_DATE Current: 43.1.1 Target: null
-[13Sep2022 10:49:01.337] [Worker-Main-6/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Exception loading blockstate definition: 'examplemod:blockstates/example_block.json' missing model for variant: 'examplemod:example_block#'
-[13Sep2022 10:49:02.290] [Worker-Main-6/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Unable to load model: 'examplemod:example_block#inventory' referenced from: examplemod:example_block#inventory: java.io.FileNotFoundException: examplemod:models/item/example_block.json
-[13Sep2022 10:49:03.924] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
-[13Sep2022 10:49:03.924] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[13Sep2022 10:49:04.014] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Speakers (Realtek(R) Audio)
-[13Sep2022 10:49:04.015] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
-[13Sep2022 10:49:04.125] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[13Sep2022 10:49:04.130] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
-[13Sep2022 10:49:04.130] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[13Sep2022 10:49:04.131] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[13Sep2022 10:49:04.131] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[13Sep2022 10:49:04.132] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[13Sep2022 10:49:04.132] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[13Sep2022 10:49:04.769] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[13Sep2022 10:49:04.924] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
-[13Sep2022 10:49:04.925] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[13Sep2022 10:49:04.925] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[13Sep2022 10:49:05.490] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: Invalid session id
-[13Sep2022 10:49:18.422] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
-[13Sep2022 10:49:19.108] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1179 advancements
-[13Sep2022 10:49:19.506] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.19.2
-[13Sep2022 10:49:19.507] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
-[13Sep2022 10:49:19.841] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
-[13Sep2022 10:49:22.640] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Sep2022 10:49:22.640] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Sep2022 10:49:22.640] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Sep2022 10:49:22.640] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Sep2022 10:49:22.640] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Sep2022 10:49:22.671] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Sep2022 10:49:22.887] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 9%
-[13Sep2022 10:49:23.391] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 99%
-[13Sep2022 10:49:23.391] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 3528 ms
-[13Sep2022 10:49:23.394] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
-[13Sep2022 10:49:23.395] [Server thread/INFO] [com.example.examplemod.ExampleMod/]: HELLO from server starting
-[13Sep2022 10:49:23.552] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
-[13Sep2022 10:49:23.554] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
-[13Sep2022 10:49:23.689] [Render thread/WARN] [io.netty.util.internal.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
-[13Sep2022 10:49:24.280] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
-[13Sep2022 10:49:24.314] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.server.PlayerAdvancements@7b1419f2
-[13Sep2022 10:49:24.328] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:125d6616] logged in with entity id 46 at (826.4393018781348, 81.0, -638.4058815500124)
-[13Sep2022 10:49:24.386] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
-[13Sep2022 10:49:27.053] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 0 advancements
-[13Sep2022 10:49:28.895] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[13Sep2022 10:49:28.907] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[13Sep2022 10:49:29.043] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[13Sep2022 10:49:29.050] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[13Sep2022 11:00:41.137] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Seed: [8486214866965744170]
-[13Sep2022 11:02:57.496] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[13Sep2022 11:02:57.501] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[13Sep2022 11:02:57.510] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[13Sep2022 11:02:57.511] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[13Sep2022 11:05:00.746] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[13Sep2022 11:05:00.751] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[13Sep2022 11:05:00.757] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[13Sep2022 11:05:00.758] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[13Sep2022 11:05:01.800] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
-[13Sep2022 11:05:01.801] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
-[13Sep2022 11:05:01.807] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Stopping singleplayer server as player logged out
-[13Sep2022 11:05:01.857] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
-[13Sep2022 11:05:01.857] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
-[13Sep2022 11:05:01.857] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
-[13Sep2022 11:05:03.654] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[13Sep2022 11:05:05.008] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[13Sep2022 11:05:05.009] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[13Sep2022 11:05:05.020] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (New World (2)): All chunks are saved
-[13Sep2022 11:05:05.020] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[13Sep2022 11:05:05.020] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[13Sep2022 11:05:05.020] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
-[13Sep2022 11:05:12.942] [Render thread/INFO] [net.minecraft.world.level.storage.LevelStorageSource/]: Deleting level Mod Testing
-[13Sep2022 11:05:12.942] [Render thread/INFO] [net.minecraft.world.level.storage.LevelStorageSource/]: Attempt 1...
-[13Sep2022 11:05:14.562] [Render thread/INFO] [net.minecraft.world.level.storage.LevelStorageSource/]: Deleting level New World
-[13Sep2022 11:05:14.562] [Render thread/INFO] [net.minecraft.world.level.storage.LevelStorageSource/]: Attempt 1...
-[13Sep2022 11:05:16.738] [Render thread/INFO] [net.minecraft.world.level.storage.LevelStorageSource/]: Deleting level New World (1)
-[13Sep2022 11:05:16.738] [Render thread/INFO] [net.minecraft.world.level.storage.LevelStorageSource/]: Attempt 1...
-[13Sep2022 11:05:49.356] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
-[13Sep2022 11:05:49.780] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1179 advancements
-[13Sep2022 11:05:56.956] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
+[15Sep2022 20:54:16.151] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 1.19, --assetsDir, C:\Users\Hector\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 43.1.1, --fml.mcVersion, 1.19.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220805.130853]
+[15Sep2022 20:54:16.157] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.8+10.0.8+main.0ef7e830 starting: java version 17.0.4.1 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[15Sep2022 20:54:16.315] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Hector/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23120!/ Service=ModLauncher Env=CLIENT
+[15Sep2022 20:54:16.668] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Hector\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.19.2-43.1.1\4ed0d46c3cd0883da364ee1aace4f012ab07f408\javafmllanguage-1.19.2-43.1.1.jar is missing mods.toml file
+[15Sep2022 20:54:16.673] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Hector\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.19.2-43.1.1\f185fdcfb9aa2db13cb366d80f6902bb29b10437\lowcodelanguage-1.19.2-43.1.1.jar is missing mods.toml file
+[15Sep2022 20:54:16.678] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Hector\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.19.2-43.1.1\5c1fbe775a983c4f8bdba7b491644b50b619f11d\mclanguage-1.19.2-43.1.1.jar is missing mods.toml file
+[15Sep2022 20:54:16.683] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Hector\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.19.2-43.1.1\4108eba77f38a55539813fecb638eeccf7fd6314\fmlcore-1.19.2-43.1.1.jar is missing mods.toml file
+[15Sep2022 20:54:16.805] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[15Sep2022 20:54:17.968] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\Hector\.gradle\caches\forge_gradle\assets, --assetIndex, 1.19]
+[15Sep2022 20:54:21.017] [pool-3-thread-1/INFO] [net.minecraft.util.datafix.DataFixers/]: Building unoptimized datafixer
+[15Sep2022 20:54:22.783] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/C:/Users/Hector/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.1.1_mapped_official_1.19.2/forge-1.19.2-43.1.1_mapped_official_1.19.2-recomp.jar%23183!/assets/.mcassetsroot' uses unexpected schema
+[15Sep2022 20:54:22.783] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/C:/Users/Hector/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.1.1_mapped_official_1.19.2/forge-1.19.2-43.1.1_mapped_official_1.19.2-recomp.jar%23183!/data/.mcassetsroot' uses unexpected schema
+[15Sep2022 20:54:22.813] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[15Sep2022 20:54:22.818] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[15Sep2022 20:54:22.933] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
+[15Sep2022 20:54:23.407] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 43.1.1, for MC 1.19.2 with MCP 20220805.130853
+[15Sep2022 20:54:23.410] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v43.1.1 Initialized
+[15Sep2022 20:54:24.226] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [examplemod]
+[15Sep2022 20:54:24.338] [Render thread/INFO] [com.mojang.text2speech.NarratorWindows/]: Narrator library for x64 successfully loaded
+[15Sep2022 20:54:24.364] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: Default, Mod Resources
+[15Sep2022 20:54:24.389] [Worker-Main-2/INFO] [com.example.examplemod.ExampleMod/]: HELLO FROM COMMON SETUP
+[15Sep2022 20:54:24.389] [Worker-Main-2/INFO] [com.example.examplemod.ExampleMod/]: DIRT BLOCK >> minecraft:dirt
+[15Sep2022 20:54:24.613] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[15Sep2022 20:54:24.682] [Worker-Main-5/INFO] [com.example.examplemod.ExampleMod/]: HELLO FROM CLIENT SETUP
+[15Sep2022 20:54:24.682] [Worker-Main-5/INFO] [com.example.examplemod.ExampleMod/]: MINECRAFT NAME >> Dev
+[15Sep2022 20:54:25.514] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: UP_TO_DATE Current: 43.1.1 Target: null
+[15Sep2022 20:54:27.361] [Worker-Main-7/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Exception loading blockstate definition: 'examplemod:blockstates/example_block.json' missing model for variant: 'examplemod:example_block#'
+[15Sep2022 20:54:28.348] [Worker-Main-7/WARN] [net.minecraft.client.resources.model.ModelBakery/]: Unable to load model: 'examplemod:example_block#inventory' referenced from: examplemod:example_block#inventory: java.io.FileNotFoundException: examplemod:models/item/example_block.json
+[15Sep2022 20:54:30.123] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[15Sep2022 20:54:30.124] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[15Sep2022 20:54:30.166] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Speakers (Realtek(R) Audio)
+[15Sep2022 20:54:30.167] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[15Sep2022 20:54:30.302] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[15Sep2022 20:54:30.309] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
+[15Sep2022 20:54:30.309] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[15Sep2022 20:54:30.310] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[15Sep2022 20:54:30.311] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[15Sep2022 20:54:30.311] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[15Sep2022 20:54:30.312] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[15Sep2022 20:54:31.015] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[15Sep2022 20:54:31.170] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[15Sep2022 20:54:31.172] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[15Sep2022 20:54:31.172] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[15Sep2022 20:54:31.666] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: Invalid session id
+[15Sep2022 20:55:48.536] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
+[15Sep2022 20:55:49.340] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1179 advancements
+[15Sep2022 20:55:49.751] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.19.2
+[15Sep2022 20:55:49.751] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[15Sep2022 20:55:50.085] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[15Sep2022 20:55:52.785] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Sep2022 20:55:52.785] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Sep2022 20:55:52.785] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Sep2022 20:55:52.785] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Sep2022 20:55:52.785] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Sep2022 20:55:52.785] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Sep2022 20:55:53.095] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 14%
+[15Sep2022 20:55:53.496] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[15Sep2022 20:55:53.496] [Server thread/INFO] [com.example.examplemod.ExampleMod/]: HELLO from server starting
+[15Sep2022 20:55:53.518] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 3427 ms
+[15Sep2022 20:55:53.570] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
+[15Sep2022 20:55:53.572] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
+[15Sep2022 20:55:53.639] [Render thread/WARN] [io.netty.util.internal.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
+[15Sep2022 20:55:54.120] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
+[15Sep2022 20:55:54.165] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.server.PlayerAdvancements@7e02f76f
+[15Sep2022 20:55:54.179] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:815ef4fd] logged in with entity id 48 at (850.191206933449, 63.0, -746.7693341870066)
+[15Sep2022 20:55:54.234] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[15Sep2022 20:55:56.645] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 11 advancements
+[15Sep2022 20:55:58.646] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[15Sep2022 20:55:58.664] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:overworld
+[15Sep2022 20:55:58.726] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:the_end
+[15Sep2022 20:55:58.730] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:the_nether
+[15Sep2022 20:56:16.239] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:56:17.479] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Creative Mode]
+[15Sep2022 20:56:17.490] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Set own game mode to Creative Mode
+[15Sep2022 20:56:44.472] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:01.447] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[15Sep2022 20:57:01.452] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:overworld
+[15Sep2022 20:57:01.475] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:the_end
+[15Sep2022 20:57:01.476] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:the_nether
+[15Sep2022 20:57:05.722] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:06.239] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:06.573] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:07.028] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:08.179] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:10.673] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:11.022] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:11.378] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:11.730] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:12.130] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:12.789] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:13.532] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:14.073] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:14.530] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:14.889] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:15.346] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:15.805] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:16.340] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:16.664] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:17.072] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:17.477] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:22.839] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:23.573] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:24.274] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:24.872] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:25.504] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:26.206] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:26.860] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:27.205] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:27.540] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:27.906] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:28.522] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:29.089] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:29.589] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:30.073] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:30.578] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:31.106] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:31.606] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:32.122] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:32.539] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:33.139] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:33.905] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:34.478] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:35.239] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:35.806] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:36.389] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:37.110] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:37.655] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:38.489] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:39.522] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:40.239] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:40.822] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:41.494] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:42.356] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:43.005] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:43.728] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:44.406] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:44.906] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:45.389] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:45.805] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:46.160] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:46.529] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:47.989] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:48.423] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:48.773] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:49.223] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:49.560] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:55.643] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set the time to 1000]
+[15Sep2022 20:57:55.646] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Set the time to 1000
+[15Sep2022 20:57:56.456] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:57.022] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:57.693] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:58.256] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:58.883] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:57:59.477] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:00.106] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:00.906] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:01.423] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:01.957] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:02.522] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:03.056] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:03.406] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:03.772] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:04.147] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:04.573] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:05.222] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:05.830] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:06.439] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:07.022] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:07.560] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:08.040] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 20:58:09.148] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[15Sep2022 20:58:09.152] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:overworld
+[15Sep2022 20:58:09.163] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:the_end
+[15Sep2022 20:58:09.165] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:the_nether
+[15Sep2022 21:05:28.646] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 21:05:29.459] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 21:05:30.059] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 21:05:30.542] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 21:05:31.393] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 21:05:32.115] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 21:05:32.859] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 21:05:33.530] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 21:05:34.259] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 21:05:34.996] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 21:05:35.059] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 34 advancements
+[15Sep2022 21:05:35.809] [Render thread/INFO] [com.example.examplemod.MManager.MManager/]: Detected key press!
+[15Sep2022 21:05:41.648] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[15Sep2022 21:05:41.653] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:overworld
+[15Sep2022 21:05:41.662] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:the_end
+[15Sep2022 21:05:41.663] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:the_nether
+[15Sep2022 21:05:42.605] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
+[15Sep2022 21:05:42.605] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
+[15Sep2022 21:05:42.614] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Stopping singleplayer server as player logged out
+[15Sep2022 21:05:42.666] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[15Sep2022 21:05:42.666] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[15Sep2022 21:05:42.667] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[15Sep2022 21:05:44.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:overworld
+[15Sep2022 21:05:44.463] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:the_end
+[15Sep2022 21:05:44.464] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Woodland]'/minecraft:the_nether
+[15Sep2022 21:05:44.478] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (New World (2)): All chunks are saved
+[15Sep2022 21:05:44.478] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[15Sep2022 21:05:44.478] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[15Sep2022 21:05:44.478] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[15Sep2022 21:05:45.873] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!

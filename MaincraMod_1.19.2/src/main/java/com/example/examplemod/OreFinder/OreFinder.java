@@ -27,7 +27,6 @@ import net.minecraft.world.phys.Vec3;
 public class OreFinder {
 	
 	public static final Color BROWN = new Color(51, 25, 0);
-
 	
 	private final HashMap<Block, Color> COLOR_ORE_MAP = new HashMap<>() {{
 		put(Blocks.IRON_ORE, Color.GRAY);
@@ -51,6 +50,8 @@ public class OreFinder {
 		put(Blocks.ANCIENT_DEBRIS, Color.CYAN);
 		put(Blocks.CHEST, BROWN);
 		put(Blocks.TRAPPED_CHEST, BROWN);
+		put(Blocks.NETHER_GOLD_ORE, Color.YELLOW);
+		put(Blocks.SPAWNER, Color.WHITE);
 	}};
 	
 	private final ArrayList<Block> BLOCKLISTHUNT = new ArrayList<>(Arrays.asList(COLOR_ORE_MAP.keySet().toArray(new Block[0])));
@@ -58,8 +59,8 @@ public class OreFinder {
 	
 //	private static final Logger LOG = LogManager.getLogger();
 	
-	private final int ORE_LIMIT_FOR_RENDER = 5;
-	private final int ORERANGE = 50;
+	private final int ORE_LIMIT_FOR_RENDER = 8;
+	private final int ORERANGE = 80;
 	private boolean isActive;
 	private final long DEFAULT_SEARCH_DELAY = 3000;
 	private long lastDelay;

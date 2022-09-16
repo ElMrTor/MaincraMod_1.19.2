@@ -21,6 +21,7 @@ import com.mojang.math.Matrix4f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
@@ -32,6 +33,7 @@ public class Renderer {
 	private MManager manager;	
 	private boolean isActive;
 	private Map<Color, List<Vec3>> vertexToRender;
+	private Map<Color, List<LivingEntity>> livingEntitiesToRender;
 	private static final Color DEFAULT_COLOR = Color.GREEN;
 	private List<RenderEffect> effectsToRenderList;
 	
@@ -39,28 +41,17 @@ public class Renderer {
 		this.manager = manager;
 		isActive = false;
 		vertexToRender = new HashMap<>();
+		livingEntitiesToRender = new HashMap<>();
 		effectsToRenderList = new ArrayList<>();
 	}
-	//	public void addRenderFuntion(Function<Object, Object> o) {
-//		functionList.add((Function<Object, Object>) o);
-//	}
 	
 	public void addRenderEffectClass(RenderEffect rEffect) {
 		effectsToRenderList.add(rEffect);
 	}
 	
-//	@SubscribeEvent
-//	public void renderFill(RenderLevelStageEvent event) {
-//		Minecraft mc = Minecraft.getInstance();
-//		if (!isActive || mc.level == null || !event.getStage().equals(Stage.AFTER_PARTICLES))
-//			return;
-//		RenderSystem.enableBlend();
-//	}
 	
 	private void setPolygonFill() {
 		RenderSystem.polygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_FILL);
-//		RenderSystem.enablePolygonOffset();
-//		RenderSystem.polygonOffset(-10f, -10f);
 		RenderSystem.disableTexture();
 		RenderSystem.disableCull();
 		RenderSystem.disableDepthTest();
@@ -93,9 +84,6 @@ public class Renderer {
 		RenderSystem.enablePolygonOffset();
 		RenderSystem.polygonOffset(-1f, -1f);
 		RenderSystem.polygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_LINE);
-//		RenderSystem.disableBlend(); 
-
-//		RenderSystem.lineWidth(RenderSystem.getShaderLineWidth() * 2f);
 	}
 	
 	@SubscribeEvent
@@ -104,16 +92,13 @@ public class Renderer {
 		if (!isActive || mc.level == null || !event.getStage().equals(Stage.AFTER_PARTICLES))
 			return;
 		
-//		setPolygonLine();
+
 		RenderSystem.setShader(GameRenderer::getPositionColorShader);
 		Tesselator tess = RenderSystem.renderThreadTesselator();
-//		Tesselator tess = Tesselator.getInstance();
 		BufferBuilder buffer = tess.getBuilder();
 		PoseStack pStack = event.getPoseStack();
 		Entity view = mc.getCameraEntity();
 		float oldLineWidth = RenderSystem.getShaderLineWidth();
-//		RenderSystem.lineWidth(oldLineWidth * 2f);
-//		RenderSystem.lineWidth(2f);
 				
 		pStack.pushPose();
 		// Do interpolation translation for smoothness
@@ -122,18 +107,6 @@ public class Renderer {
 		double z = view.zOld + (view.getZ() - view.zOld) * event.getPartialTick();
 		
 		pStack.translate(-x, -y- view.getEyeHeight(), -z);
-		
-//		RenderSystem.polygonMode(GL11.GL_FRONT_AND_BACK, GL11.GL_FILL);
-//		RenderSystem.enablePolygonOffset();
-//		RenderSystem.polygonOffset(-10f, -10f);
-//		RenderSystem.disableTexture();
-//		RenderSystem.disableCull();
-//		RenderSystem.disableDepthTest();
-//		RenderSystem.enableBlend();
-//		RenderSystem.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		
-		
-//		setPolygonLine();
 		setPolygonFill();
 		manager.mobTracker.trackMobs();
 		manager.oreFinder.findOre();
@@ -153,43 +126,6 @@ public class Renderer {
 		RenderSystem.lineWidth(oldLineWidth);
 	}
 
-//	@SubscribeEvent
-//	public void render(RenderLevelStageEvent event) {
-//		Minecraft mc = Minecraft.getInstance();
-//		if (!isActive || mc.level == null || !event.getStage().equals(Stage.AFTER_PARTICLES))
-//			return;
-//		
-//		RenderSystem.disableDepthTest();
-//		RenderSystem.setShader(GameRenderer::getPositionColorShader);
-//		Tesselator tess = RenderSystem.renderThreadTesselator();
-////		Tesselator tess = Tesselator.getInstance();
-//		BufferBuilder buffer = tess.getBuilder();
-//		PoseStack pStack = event.getPoseStack();
-//		Entity view = mc.getCameraEntity();
-//		float oldLineWidth = RenderSystem.getShaderLineWidth();
-//		RenderSystem.lineWidth(oldLineWidth * 50);
-//				
-//		pStack.pushPose();
-//		// Do interpolation translation for smoothness
-//		double x = view.xOld + (view.getX() - view.xOld) * event.getPartialTick();
-//		double y = (view.yOld + ((view.getY() - view.yOld) * event.getPartialTick()));
-//		double z = view.zOld + (view.getZ() - view.zOld) * event.getPartialTick();
-//		
-//		pStack.translate(-x, -y- view.getEyeHeight(), -z);
-//		
-//		manager.mobTracker.trackMobs();
-//		manager.oreFinder.findOre();
-//		for (RenderEffect rEffect: effectsToRenderList) {
-//			rEffect.getRenderEffect();
-//		}
-//		
-//		doVertexRender(buffer, pStack.last().pose());
-//		tess.end();
-//		pStack.popPose();
-//		RenderSystem.enableDepthTest();
-//		resetVertexMap();
-//		RenderSystem.lineWidth(oldLineWidth);
-//	}
 	
 	public synchronized void addRenderList(Color color, List<Vec3> vList) {
 		if (vertexToRender.containsKey(color)) {
@@ -198,6 +134,28 @@ public class Renderer {
 			vertexToRender.put(color, vList);
 		}
 	}
+	
+	public synchronized void addRenderListEntity(Color color, List<LivingEntity> entityList) {
+		if (livingEntitiesToRender.containsKey(color)) {
+			livingEntitiesToRender.get(color).addAll(entityList);
+		} else {		
+			livingEntitiesToRender.put(color, entityList);
+		}
+	}
+	
+//	private void prepareEntitisRender(float currentTick) {
+//		for (List<LivingEntity> entityList: livingEntitiesToRender.values()) {
+//			for (LivingEntity lEntity: entityList) {
+////				double x = view.xOld + (view.getX() - view.xOld) * event.getPartialTick();
+//				AABB bBox = lEntity.getBoundingBox();
+//				double x = lEntity.xOld + (lEntity.getX() - lEntity.xOld) * currentTick;
+//				double y = lEntity.yOld + (lEntity.getY() - lEntity.yOld) * currentTick;
+//				double z = lEntity.zOld + (lEntity.getZ() - lEntity.zOld) * currentTick;
+//				lEntity.
+////				bBox = new AABB();
+//			}
+//		}
+//	}
 	
 	public void addRenderList(List<Vec3> vList) {
 		addRenderList(Renderer.DEFAULT_COLOR, vList);
@@ -229,7 +187,8 @@ public class Renderer {
 
 	
 	private void resetVertexMap() {
-		vertexToRender = new HashMap<>();		
+		vertexToRender.clear();
+		livingEntitiesToRender.clear();
 	}
 	
 	public void activate() {
@@ -321,17 +280,4 @@ public class Renderer {
 			vList.add(new Vec3(maxX, minY, minZ));			
 		return vList;
 	}	
-
-//	private void doVertexRender(BufferBuilder buffer, Matrix4f matrix) {
-//	buffer.begin(VertexFormat.Mode.DEBUG_LINES, DefaultVertexFormat.POSITION_COLOR);
-//	
-//	for (Entry<Color, List<Vec3>> entry: vertexToRender.entrySet()) {
-//		Color c = entry.getKey();
-//		for (Vec3 v: entry.getValue()) {
-//			buffer.vertex(matrix, (float) v.x, (float) v.y, (float) v.z).color(c.getRed(), c.getGreen(), c.getBlue(), c.getAlpha()).endVertex();
-//		}			
-//	}
-//}	
-
-	
 }

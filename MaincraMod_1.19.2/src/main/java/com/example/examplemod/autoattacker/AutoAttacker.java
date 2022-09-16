@@ -17,11 +17,11 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent.ClientTickEvent;
-import net.minecraftforge.event.level.BlockEvent.BreakEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class AutoAttacker {
@@ -38,6 +38,8 @@ public class AutoAttacker {
 		isActive = false;
 		log = LogUtils.getLogger();
 	}
+	
+	
 	
 	public void attackAllNearbyMonsters() {
 		Minecraft mc = Minecraft.getInstance();
@@ -68,11 +70,20 @@ public class AutoAttacker {
 		
 		for (BlockPos bPos: BlockPos.betweenClosed(startBlock, endBlock)) {
 			bPos = bPos.immutable();
-			if ((level.getBlockState(bPos).is(BlockTags.REPLACEABLE_PLANTS) || level.getBlockState(bPos).is(BlockTags.SMALL_FLOWERS))) {				
-				mc.gameMode.startDestroyBlock(bPos, Direction.DOWN);
+			BlockState bState = level.getBlockState(bPos);
+			if ((bState.is(BlockTags.REPLACEABLE_PLANTS) || bState.is(BlockTags.SMALL_FLOWERS))) {
+				if (mc.player.canInteractWith(bPos, 0d))
+					mc.gameMode.startDestroyBlock(bPos, Direction.DOWN);				
+			} else if (bState.getBlock().equals(Blocks.SUGAR_CANE)) {
+				Block b1 = level.getBlockState(bPos.below()).getBlock();
+				Block b2 = level.getBlockState(bPos.below().below()).getBlock();
+				if (b1.equals(Blocks.SUGAR_CANE) && b2.equals(Blocks.SUGAR_CANE)) {
+					if (mc.player.canInteractWith(bPos.below(), 0d))
+						mc.gameMode.startDestroyBlock(bPos.below(), Direction.DOWN);
+				}
 			}
 		}
-	}
+	}	
 	
 	@SubscribeEvent
 	public void checkAndAttackProjectile(ClientTickEvent event) {
