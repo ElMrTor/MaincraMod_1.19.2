@@ -65,12 +65,10 @@ public class ExampleMod
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(managerInstance);
-        MinecraftForge.EVENT_BUS.register(managerInstance.oreFinder);
-        MinecraftForge.EVENT_BUS.register(managerInstance.renderer);
-        MinecraftForge.EVENT_BUS.register(managerInstance.mobTracker);
+        MinecraftForge.EVENT_BUS.register(managerInstance.oreFinder);        
+        MinecraftForge.EVENT_BUS.register(managerInstance.mobTracker);        
         MinecraftForge.EVENT_BUS.register(managerInstance.autoAttack);
-        
-        
+        MinecraftForge.EVENT_BUS.register(managerInstance.renderer);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

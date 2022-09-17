@@ -104,7 +104,7 @@ public class MobTracker implements RenderEffect {
 	
 	@Override
 	public void getRenderEffect() {
-		
+		trackMobs();
 	}
 	
 

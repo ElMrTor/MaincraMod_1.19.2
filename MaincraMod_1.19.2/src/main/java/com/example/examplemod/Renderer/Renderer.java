@@ -3,6 +3,8 @@ package com.example.examplemod.Renderer;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -43,6 +45,8 @@ public class Renderer {
 		vertexToRender = new HashMap<>();
 		livingEntitiesToRender = new HashMap<>();
 		effectsToRenderList = new ArrayList<>();
+		effectsToRenderList.add(manager.mobTracker);
+		effectsToRenderList.add(manager.oreFinder);
 	}
 	
 	public void addRenderEffectClass(RenderEffect rEffect) {
@@ -108,10 +112,11 @@ public class Renderer {
 		
 		pStack.translate(-x, -y- view.getEyeHeight(), -z);
 		setPolygonFill();
-		manager.mobTracker.trackMobs();
-		manager.oreFinder.findOre();
+//		manager.mobTracker.trackMobs();
+//		manager.oreFinder.findOre();
 		for (RenderEffect rEffect: effectsToRenderList) {
-			rEffect.getRenderEffect();
+			if (rEffect != null)
+				rEffect.getRenderEffect();
 		}
 		doVertexRender(buffer, pStack.last().pose(), VertexFormat.Mode.QUADS);
 		tess.end();
@@ -133,6 +138,22 @@ public class Renderer {
 		} else {		
 			vertexToRender.put(color, vList);
 		}
+	}
+	
+	public synchronized void addRenderList(Color color, Iterator<Vec3> vList) {
+		if (vertexToRender.containsKey(color)) {
+			vList.forEachRemaining(vertexToRender.get(color)::add);			
+		} else {
+			LinkedList<Vec3> nList = new LinkedList<>();
+			vList.forEachRemaining(nList::add);			
+		}
+	}
+	
+	public synchronized void addRenderBoxList(Color color, List<AABB> boxList) {		
+		for (AABB box: boxList) {
+			addRenderList(color, getVertexListFromAABB(box));
+		}
+		
 	}
 	
 	public synchronized void addRenderListEntity(Color color, List<LivingEntity> entityList) {

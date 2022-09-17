@@ -31,10 +31,10 @@ public class MManager {
 	
 	public MManager() {
 		pressedKeys = new HashMap<>();
-		oreFinder = new OreFinder();
-		renderer = new Renderer(this);
+		oreFinder = new OreFinder();		
 		mobTracker = new MobTracker();
 		autoAttack = new AutoAttacker();
+		renderer = new Renderer(this);
 		oreFinder.setRenderer(renderer);
 		mobTracker.setRenderer(renderer);
 		autoAttack.activate();

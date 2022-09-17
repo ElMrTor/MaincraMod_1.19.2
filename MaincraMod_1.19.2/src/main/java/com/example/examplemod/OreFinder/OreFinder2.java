@@ -5,14 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
-import com.example.examplemod.Renderer.RenderEffect;
 
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
@@ -29,7 +24,7 @@ import net.minecraft.world.phys.Vec3;
 
 
 
-public class OreFinder implements RenderEffect{
+public class OreFinder2 {
 	
 	public static final Color BROWN = new Color(51, 25, 0);
 	
@@ -60,30 +55,26 @@ public class OreFinder implements RenderEffect{
 	}};
 	
 	private final ArrayList<Block> BLOCKLISTHUNT = new ArrayList<>(Arrays.asList(COLOR_ORE_MAP.keySet().toArray(new Block[0])));
-	private Map<Block, SortedSet<BlockPos>> oreMap;
+	private Map<Block, ArrayList<BlockPos>> oreMap;
 	
 //	private static final Logger LOG = LogManager.getLogger();
 	
 	private final int ORE_LIMIT_FOR_RENDER = 8;
-	private final int ORERANGE = 200; // Assume Ore range will be divisible by 10
+	private final int ORERANGE = 80;
 	private boolean isActive;
 	private final long DEFAULT_SEARCH_DELAY = 3000;
 	private long lastDelay;
 	private Renderer renderer;
-//	private OreDistanceComparator oreComp;
-	private int currentOreChunk;
-	private Set<OreFinderChunk> oreChunkSet;
+	private OreDistanceComparator oreComp;
 	
-	public OreFinder() {
+	public OreFinder2() {
 		isActive = false;		
 		oreMap = new HashMap<>();
 		for (Block block: COLOR_ORE_MAP.keySet()) {
-			oreMap.put(block, new TreeSet<>(new OreDistanceComparator()));
+			oreMap.put(block, new ArrayList<>());
 		}
 		lastDelay = 0;
-//		oreComp = new OreDistanceComparator();
-		currentOreChunk = 0;
-		oreChunkSet = new HashSet<>();
+		oreComp = new OreDistanceComparator();
 	}
 	
 	public void setRenderer(Renderer r) {
@@ -95,7 +86,7 @@ public class OreFinder implements RenderEffect{
 	}
 	
 	private void clearOreMap() {
-		for (SortedSet<BlockPos> list: oreMap.values()) {
+		for (ArrayList<BlockPos> list: oreMap.values()) {
 			list.clear();
 		}
 	}	
@@ -120,19 +111,23 @@ public class OreFinder implements RenderEffect{
 		BlockPos startBlock = playerBlockPos.north(halfRange).east(halfRange).above(halfRange);
 		BlockPos endBlock = playerBlockPos.south(halfRange).west(halfRange).below(halfRange);		
 		
-		for (BlockPos bPos: BlockPos.betweenClosed(startBlock, endBlock)) {			
-			Block currentBlock = maincra.level.getBlockState(bPos).getBlock();			
-			if (BLOCKLISTHUNT.contains(currentBlock)) {
-				bPos = bPos.immutable();
-				oreMap.get(currentBlock).add(bPos);				
+		for (BlockPos bPos: BlockPos.betweenClosed(startBlock, endBlock)) {
+			bPos = bPos.immutable();
+			Block currentBlock = maincra.level.getBlockState(bPos).getBlock();
+			
+			if (BLOCKLISTHUNT.contains(currentBlock)) {				
+					oreMap.get(currentBlock).add(bPos);				
 			}
+		}
+		for (List<BlockPos> bPosList: oreMap.values()) {
+			bPosList.sort(oreComp);
 		}
 		addOreIntoRenderer();
 	}
 	
 	private void addOreIntoRenderer() {
 		if (!(renderer == null)) {
-			for (Entry<Block, SortedSet<BlockPos>> entry: oreMap.entrySet()) {
+			for (Entry<Block, ArrayList<BlockPos>> entry: oreMap.entrySet()) {
 				Color c = COLOR_ORE_MAP.get(entry.getKey());
 				int currentOreLimit = 0;
 					for (BlockPos bPos: entry.getValue()) {
@@ -165,12 +160,6 @@ public class OreFinder implements RenderEffect{
 			LocalPlayer player = mc.player;
 			return Double.compare(player.distanceToSqr((double) bPos0.getX(), (double) bPos0.getY(), (double) bPos0.getZ()), player.distanceToSqr((double) bPos1.getX(), (double) bPos1.getY(), (double) bPos1.getZ()));
 		}
-		
-	}
-
-	@Override
-	public void getRenderEffect() {
-		 findOre();
 		
 	}
 }
