@@ -6,9 +6,9 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -63,16 +63,16 @@ public class OreFinder implements RenderEffect{
 	private Map<Block, SortedSet<BlockPos>> oreMap;
 	
 //	private static final Logger LOG = LogManager.getLogger();
-	
+	private static final int TICKS_TO_FULL_SCAN = 20;
 	private final int ORE_LIMIT_FOR_RENDER = 8;
-	private final int ORERANGE = 200; // Assume Ore range will be divisible by 10
+	private final int ORERANGE = 40; // Assume Ore range will be divisible by 10
 	private boolean isActive;
 	private final long DEFAULT_SEARCH_DELAY = 3000;
 	private long lastDelay;
-	private Renderer renderer;
+	private Renderer renderer;	
 //	private OreDistanceComparator oreComp;
 	private int currentOreChunk;
-	private Set<OreFinderChunk> oreChunkSet;
+	private List<OreFinderChunk> oreChunkList;
 	
 	public OreFinder() {
 		isActive = false;		
@@ -83,7 +83,7 @@ public class OreFinder implements RenderEffect{
 		lastDelay = 0;
 //		oreComp = new OreDistanceComparator();
 		currentOreChunk = 0;
-		oreChunkSet = new HashSet<>();
+		oreChunkList = new ArrayList<>(TICKS_TO_FULL_SCAN);
 	}
 	
 	public void setRenderer(Renderer r) {
