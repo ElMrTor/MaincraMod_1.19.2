@@ -38,15 +38,33 @@ public class Renderer {
 	private Map<Color, List<LivingEntity>> livingEntitiesToRender;
 	private static final Color DEFAULT_COLOR = Color.GREEN;
 	private List<RenderEffect> effectsToRenderList;
+	public static final Color BROWN = new Color(51, 25, 0);
+//	private int MIN_COLOR_VEC_SIZE = 500;
+//	private Color[] COLORS = {
+//			Color.BLACK,
+//			Color.GREEN,
+//			Color.BLUE,
+//			Color.CYAN,
+//			Color.DARK_GRAY,
+//			Color.GRAY,
+//			Color.LIGHT_GRAY,
+//			Color.MAGENTA,
+//			Color.ORANGE,
+//			Color.PINK,
+//			Color.RED,
+//			Color.WHITE,
+//			Color.YELLOW,
+//			BROWN,
+//	};
 	
 	public Renderer(MManager manager) {
 		this.manager = manager;
 		isActive = false;
 		vertexToRender = new HashMap<>();
 		livingEntitiesToRender = new HashMap<>();
-		effectsToRenderList = new ArrayList<>();
-		effectsToRenderList.add(manager.mobTracker);
-		effectsToRenderList.add(manager.oreFinder);
+		effectsToRenderList = new LinkedList<>();
+		effectsToRenderList.add(this.manager.mobTracker);
+		effectsToRenderList.add(this.manager.oreFinder);		
 	}
 	
 	public void addRenderEffectClass(RenderEffect rEffect) {
@@ -225,7 +243,7 @@ public class Renderer {
 	}	
 	
 	public static List<Vec3> getVertexListLineFromAABB(AABB box) {
-		ArrayList<Vec3> vList = new ArrayList<>(24);
+		LinkedList<Vec3> vList = new LinkedList<>();
 		double maxX = box.maxX, maxY = box.maxY, maxZ = box.maxZ;
 		double minX = box.minX, minY = box.minY, minZ = box.minZ;		
 		
@@ -266,7 +284,7 @@ public class Renderer {
 	}
 	
 	public static List<Vec3> getVertexListFromAABB(AABB box) {
-		ArrayList<Vec3> vList = new ArrayList<>(24);
+		LinkedList<Vec3> vList = new LinkedList<>();
 		double maxX = box.maxX, maxY = box.maxY, maxZ = box.maxZ;
 		double minX = box.minX, minY = box.minY, minZ = box.minZ;		
 		
