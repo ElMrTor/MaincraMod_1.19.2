@@ -1,13 +1,7 @@
 {
-  "minecraft:recipes/transportation/acacia_boat": {
+  "minecraft:recipes/misc/gold_ingot_from_smelting_deepslate_gold_ore": {
     "criteria": {
-      "in_water": "2022-09-13 11:57:58 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/transportation/oak_boat": {
-    "criteria": {
-      "in_water": "2022-09-13 11:57:58 -0400"
+      "has_deepslate_gold_ore": "2022-09-17 23:01:32 -0400"
     },
     "done": true
   },
@@ -29,6 +23,48 @@
     },
     "done": true
   },
+  "minecraft:recipes/transportation/mangrove_boat": {
+    "criteria": {
+      "in_water": "2022-09-13 11:57:58 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/cake": {
+    "criteria": {
+      "has_egg": "2022-09-17 23:01:16 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/paper": {
+    "criteria": {
+      "has_reeds": "2022-09-13 11:57:31 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/sugar_from_sugar_cane": {
+    "criteria": {
+      "has_sugar_cane": "2022-09-13 11:57:31 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/acacia_boat": {
+    "criteria": {
+      "in_water": "2022-09-13 11:57:58 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/oak_boat": {
+    "criteria": {
+      "in_water": "2022-09-13 11:57:58 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/gold_ingot_from_blasting_deepslate_gold_ore": {
+    "criteria": {
+      "has_deepslate_gold_ore": "2022-09-17 23:01:32 -0400"
+    },
+    "done": true
+  },
   "minecraft:adventure/root": {
     "criteria": {
       "killed_something": "2022-09-15 21:05:35 -0400"
@@ -41,18 +77,6 @@
     },
     "done": true
   },
-  "minecraft:recipes/transportation/mangrove_boat": {
-    "criteria": {
-      "in_water": "2022-09-13 11:57:58 -0400"
-    },
-    "done": true
-  },
-  "minecraft:recipes/misc/paper": {
-    "criteria": {
-      "has_reeds": "2022-09-13 11:57:31 -0400"
-    },
-    "done": true
-  },
   "minecraft:recipes/transportation/spruce_boat": {
     "criteria": {
       "in_water": "2022-09-13 11:57:58 -0400"
@@ -61,22 +85,19 @@
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
+      "minecraft:old_growth_pine_taiga": "2022-09-17 22:52:08 -0400",
       "minecraft:beach": "2022-09-12 21:00:11 -0400",
       "minecraft:dark_forest": "2022-09-12 21:01:20 -0400",
       "minecraft:river": "2022-09-12 21:00:32 -0400",
+      "minecraft:dripstone_caves": "2022-09-17 23:18:48 -0400",
       "minecraft:swamp": "2022-09-12 21:00:36 -0400",
       "minecraft:forest": "2022-09-12 21:00:16 -0400",
+      "minecraft:windswept_forest": "2022-09-17 23:00:28 -0400",
       "minecraft:old_growth_spruce_taiga": "2022-09-13 11:00:18 -0400",
       "minecraft:windswept_savanna": "2022-09-12 20:59:56 -0400",
       "minecraft:plains": "2022-09-12 21:00:31 -0400"
     },
     "done": false
-  },
-  "minecraft:recipes/misc/sugar_from_sugar_cane": {
-    "criteria": {
-      "has_sugar_cane": "2022-09-13 11:57:31 -0400"
-    },
-    "done": true
   },
   "DataVersion": 3120
 }
