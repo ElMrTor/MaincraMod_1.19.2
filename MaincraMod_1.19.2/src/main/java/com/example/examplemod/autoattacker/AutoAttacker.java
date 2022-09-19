@@ -1,5 +1,6 @@
 package com.example.examplemod.autoattacker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -7,19 +8,24 @@ import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent.ClientTickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -32,6 +38,15 @@ public class AutoAttacker {
 	private final float SCAN_TIMER = 300;
 	private long lastScanTime;
 	private boolean isActive;
+	
+	public static final ArrayList<Item> PlantableBlocks = new ArrayList<>() {
+		{
+			this.add(Items.WHEAT_SEEDS);
+			this.add(Items.BEETROOT_SEEDS);
+			this.add(Items.CARROT);
+			this.add(Items.POTATO);
+		}
+	};
 	
 	public AutoAttacker() {
 		lastScanTime = 0;
@@ -56,6 +71,10 @@ public class AutoAttacker {
 		}
 	}
 	
+	public boolean isPlantable(BlockState bState, Player player) {
+		return PlantableBlocks.contains(player.getMainHandItem().getItem()) && bState.getBlock().equals(Blocks.FARMLAND);			
+	}
+	
 	public void clearDumbGrass() {
 		Minecraft mc = Minecraft.getInstance();
 		if (mc.level == null || mc.player == null)
@@ -63,6 +82,7 @@ public class AutoAttacker {
 		Vec3 playerPos = mc.player.position();		
 		int halfRange = 10 / 2;		
 		Level level = mc.level;
+		Player player = mc.player;
 		
 		BlockPos playerBlockPos = new BlockPos(playerPos);		
 		BlockPos startBlock = playerBlockPos.north(halfRange).east(halfRange).above(halfRange);
@@ -80,6 +100,14 @@ public class AutoAttacker {
 				if (b1.equals(Blocks.SUGAR_CANE) && b2.equals(Blocks.SUGAR_CANE)) {
 					if (mc.player.canInteractWith(bPos.below(), 0d))
 						mc.gameMode.startDestroyBlock(bPos.below(), Direction.DOWN);
+				}
+			}
+			else if (isPlantable(bState, player)) {
+				if (player.canInteractWith(bPos, 0d)) {
+					if (player instanceof LocalPlayer) {
+						mc.gameMode.useItemOn((LocalPlayer) player, player.getUsedItemHand(), new BlockHitResult(new Vec3(bPos.getX(), bPos.getY(), bPos.getZ()), Direction.UP, bPos, false));
+//						mc.gameMode.useItem(player, player.getUsedItemHand());
+					}
 				}
 			}
 		}

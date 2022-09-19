@@ -27,6 +27,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.client.event.RenderLevelStageEvent;
+import net.minecraftforge.client.event.RenderLevelStageEvent.Stage;
 import net.minecraftforge.event.TickEvent.ClientTickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -106,19 +108,12 @@ public class OreFinder implements RenderEffect{
 	}	
 	
 	@SubscribeEvent
-	public void findOre(ClientTickEvent event ) {
+	public void findOre(ClientTickEvent event) {
 		Minecraft maincra = getGameInstance();
 		if (!isActive && maincra.level != null && maincra.player != null)
 			clearOreMap();
 		if (!isActive || maincra.level == null || maincra.player == null)
-			return;
-				
-//		if (lastDelay == 0 || lastDelay + DEFAULT_SEARCH_DELAY < System.currentTimeMillis()) 
-//			lastDelay = System.currentTimeMillis();			
-//		else {
-//			addOreIntoRenderer();
-//			return;			
-//		}
+			return;				
 		
 		Player player = maincra.player;
 		BlockPos playerBPos = player.blockPosition();
