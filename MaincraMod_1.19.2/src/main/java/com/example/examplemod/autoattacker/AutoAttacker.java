@@ -12,6 +12,7 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -104,8 +105,8 @@ public class AutoAttacker {
 			}
 			else if (isPlantable(bState, player)) {
 				if (player.canInteractWith(bPos, 0d)) {
-					if (player instanceof LocalPlayer) {
-						mc.gameMode.useItemOn((LocalPlayer) player, player.getUsedItemHand(), new BlockHitResult(new Vec3(bPos.getX(), bPos.getY(), bPos.getZ()), Direction.UP, bPos, false));
+					if (player instanceof LocalPlayer) {						
+						mc.gameMode.useItemOn((LocalPlayer) player, InteractionHand.MAIN_HAND, new BlockHitResult(new Vec3(bPos.getX(), bPos.getY(), bPos.getZ()), Direction.UP, bPos, false));
 //						mc.gameMode.useItem(player, player.getUsedItemHand());
 					}
 				}
@@ -116,7 +117,7 @@ public class AutoAttacker {
 	@SubscribeEvent
 	public void checkAndAttackProjectile(ClientTickEvent event) {
 		Minecraft mc = Minecraft.getInstance();		
-		if (!isActive || mc.level == null || mc.player == null)
+		if (!isActive || mc.level == null || mc.player == null || !mc.level.dimension().equals(Level.END))
 			return;
 		if (checkTimer()) {			
 			BlockPos pBox = mc.player.blockPosition();		

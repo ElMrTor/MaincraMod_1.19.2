@@ -23,10 +23,10 @@ public class BlockPosHelper {
 	
 	public BlockPosHelper(int baseNumber, int targetTicksForRender) {
 		this.baseNumber = baseNumber;
-		this.halfNumber = (int) (baseNumber / 2);
-		this.totalBlocks = baseNumber * baseNumber * baseNumber;
+		this.halfNumber = (int) (this.baseNumber / 2);
+		this.totalBlocks = this.baseNumber * this.baseNumber * this.baseNumber;
 		this.targetTicksForRender = targetTicksForRender;
-		this.blocksPerSlice = baseNumber * baseNumber;
+		this.blocksPerSlice = this.baseNumber * this.baseNumber;
 		this.sliceNeeded = (int) ((totalBlocks / targetTicksForRender) / blocksPerSlice);
 		this.currentChunk = 0;
 		this.oresLoadedByChunk = new int[targetTicksForRender];
