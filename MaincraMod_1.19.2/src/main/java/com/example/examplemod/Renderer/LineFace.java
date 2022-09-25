@@ -19,7 +19,8 @@ public class LineFace {
 	
 	public List<Vec3> getQuadPointsAsLines() {
 		List<Vec3> toRet = new ArrayList<>(24*2);
-		for (int i = 0; i < pointLs.size(); ++i) {			
+		int size = pointLs.size();
+		for (int i = 0; i < size; ++i) {			
 			Vec3 v1 = pointLs.get(i);
 			Vec3 v2;
 			if ((1+i) % 4 == 0)

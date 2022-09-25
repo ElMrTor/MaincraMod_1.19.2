@@ -117,7 +117,7 @@ public class AutoAttacker {
 	@SubscribeEvent
 	public void checkAndAttackProjectile(ClientTickEvent event) {
 		Minecraft mc = Minecraft.getInstance();		
-		if (!isActive || mc.level == null || mc.player == null || !mc.level.dimension().equals(Level.END))
+		if (!isActive || mc.level == null || mc.player == null || mc.level.dimension().equals(Level.OVERWORLD))
 			return;
 		if (checkTimer()) {			
 			BlockPos pBox = mc.player.blockPosition();		

@@ -6,29 +6,29 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.slf4j.Logger;
+
 import com.example.examplemod.Renderer.RenderEffect;
-
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
-
+import com.example.examplemod.Renderer.RenderObject;
 import com.example.examplemod.Renderer.Renderer;
-
+import com.mojang.logging.LogUtils;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.client.event.RenderLevelStageEvent;
-import net.minecraftforge.client.event.RenderLevelStageEvent.Stage;
 import net.minecraftforge.event.TickEvent.ClientTickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -38,7 +38,7 @@ public class OreFinder implements RenderEffect{
 	
 	public static final Color BROWN = new Color(51, 25, 0);
 	
-	private final HashMap<Block, Color> COLOR_ORE_MAP = new HashMap<>() {{
+	private final static HashMap<Block, Color> COLOR_ORE_MAP = new HashMap<>() {{
 		put(Blocks.IRON_ORE, Color.GRAY);
 		put(Blocks.DIAMOND_ORE, Color.CYAN);
 		put(Blocks.REDSTONE_ORE, Color.RED);		
@@ -66,19 +66,19 @@ public class OreFinder implements RenderEffect{
 	
 	private final ArrayList<Block> BLOCKLISTHUNT = new ArrayList<>(Arrays.asList(COLOR_ORE_MAP.keySet().toArray(new Block[0])));
 	private Map<Block, SortedSet<ChunkBlockPos>> oreMap;
-	
-//	private static final Logger LOG = LogManager.getLogger();
+	private static ArrayList<RenderObject> renderObjectList;
+	private static final long RENDER_UPDATED_TIMER = 300;
+	private static final Logger LOG = LogUtils.getLogger();
 	private static final int TICKS_TO_FULL_SCAN = 20;
-	private final int ORE_LIMIT_FOR_RENDER = 8;
+	private static final int ORE_LIMIT_FOR_RENDER = 7;
 	private final int ORERANGE = 60; // Assume Ore range will be divisible by 10
 	private boolean isActive;
 	private final long DEFAULT_SEARCH_DELAY = 3000;
 	private long lastDelay;
 	private Renderer renderer;
 	private BlockPosHelper bHelper;
-//	private OreDistanceComparator oreComp;
-//	private int currentOreChunk;
-//	private List<OreFinderChunk> oreChunkList;
+	private int usedRenderObjects;
+	
 	
 	public OreFinder() {
 		isActive = false;		
@@ -88,13 +88,24 @@ public class OreFinder implements RenderEffect{
 		}
 		lastDelay = 0;
 		bHelper = new BlockPosHelper(ORERANGE, TICKS_TO_FULL_SCAN);
-//		oreComp = new OreDistanceComparator();
-//		currentOreChunk = 0;
-//		oreChunkList = new ArrayList<>(TICKS_TO_FULL_SCAN);
+		int renderListSize = oreMap.keySet().size() * ORE_LIMIT_FOR_RENDER;
+		renderObjectList = new ArrayList<>(renderListSize);
+		for (int i = 0; i < renderListSize; ++i) {
+			renderObjectList.add(new RenderObject());
+		}		
+	}	
+	
+	public int renderObjectsInUse() {
+		return usedRenderObjects;
+	}
+	
+	public boolean isRenderActive() {
+		return isActive;
 	}
 	
 	public void setRenderer(Renderer r) {
 		renderer = r;
+		renderer.addRenderObjectList(renderObjectList);
 	}
 	
 	private Minecraft getGameInstance() {
@@ -110,7 +121,7 @@ public class OreFinder implements RenderEffect{
 	@SubscribeEvent
 	public void findOre(ClientTickEvent event) {
 		Minecraft maincra = getGameInstance();
-		if (!isActive && maincra.level != null && maincra.player != null)
+		if (!isActive && maincra.level != null && maincra.player != null && !oreMap.isEmpty())
 			clearOreMap();
 		if (!isActive || maincra.level == null || maincra.player == null)
 			return;				
@@ -137,9 +148,12 @@ public class OreFinder implements RenderEffect{
 			}
 		}
 		bHelper.setChunkInformation(0);
-//		addOreIntoRenderer();		
 	}
 
+	public List<RenderObject> getRenderObjectList() {
+		return renderObjectList;
+	}
+	
 	public void findOre() {
 		// Not being used atm.
 		Minecraft maincra = getGameInstance();
@@ -148,7 +162,7 @@ public class OreFinder implements RenderEffect{
 		if (lastDelay == 0 || lastDelay + DEFAULT_SEARCH_DELAY < System.currentTimeMillis()) 
 			lastDelay = System.currentTimeMillis();			
 		else {
-			addOreIntoRenderer();
+//			addOreIntoRenderer();
 			return;			
 		}		
 //		clearOreMap(); // Memory leak, list isnt cleaned.
@@ -157,7 +171,8 @@ public class OreFinder implements RenderEffect{
 		
 		BlockPos playerBlockPos = new BlockPos(playerPos);		
 		BlockPos startBlock = playerBlockPos.north(halfRange).east(halfRange).above(halfRange);
-		BlockPos endBlock = playerBlockPos.south(halfRange).west(halfRange).below(halfRange);		
+		BlockPos endBlock = playerBlockPos.south(halfRange).west(halfRange).below(halfRange);
+		
 		
 		for (BlockPos bPos: BlockPos.betweenClosed(startBlock, endBlock)) {			
 			Block currentBlock = maincra.level.getBlockState(bPos).getBlock();			
@@ -166,24 +181,44 @@ public class OreFinder implements RenderEffect{
 				oreMap.get(currentBlock).add(new ChunkBlockPos(bPos, 0));				
 			}
 		}
-		addOreIntoRenderer();
+//		addOreIntoRenderer();
 	}
 	
-	private void addOreIntoRenderer() {
-		if (!(renderer == null)) {
+	private void doRenderUpdate() {
+		if (renderer != null) {
+			usedRenderObjects = 0;
 			for (Entry<Block, SortedSet<ChunkBlockPos>> entry: oreMap.entrySet()) {
 				Color c = COLOR_ORE_MAP.get(entry.getKey());
 				int currentOreLimit = 0;
 					for (BlockPos bPos: entry.getValue()) {
 						if (currentOreLimit >= ORE_LIMIT_FOR_RENDER)
 							break;
-						renderer.addRenderList(c, Renderer.getVertexListFromAABB(new AABB(bPos)));
+						RenderObject obj = renderObjectList.get(usedRenderObjects);						
+						obj.enableRender();							
+						obj.updateData(bPos);
+						obj.setColor(c);										
+						usedRenderObjects++;
 						currentOreLimit++;
 				}				
-			}
-		}			
+			}			
+		}
 	}
 	
+//	private void addOreIntoRenderer() {
+//		if (!(renderer == null)) {
+//			for (Entry<Block, SortedSet<ChunkBlockPos>> entry: oreMap.entrySet()) {
+//				Color c = COLOR_ORE_MAP.get(entry.getKey());
+//				int currentOreLimit = 0;
+//					for (BlockPos bPos: entry.getValue()) {
+//						if (currentOreLimit >= ORE_LIMIT_FOR_RENDER)
+//							break;
+//						renderer.addRenderList(c, Renderer.getVertexListFromAABB(new AABB(bPos)));
+//						currentOreLimit++;
+//				}				
+//			}
+//		}			
+//	}
+//	
 	public void activate() {
 		isActive = true;
 	}
@@ -194,12 +229,27 @@ public class OreFinder implements RenderEffect{
 	
 	public void toggle() {
 		isActive = !isActive;
+		announceActivationState();
+	}
+	
+	private void announceActivationState() {
+		Minecraft mc = Minecraft.getInstance();
+		if (mc.level != null && mc.player != null) {
+			if (isActive) { 
+				mc.gui.getChat().addMessage(Component.literal("Ore Finder Activated.").withStyle(ChatFormatting.GREEN));								
+			}
+			else {
+				mc.gui.getChat().addMessage(Component.literal("Ore Finder Deactivated.").withStyle(ChatFormatting.RED));
+				
+			}				
+		}
 	}
 	
 	@Override
 	public void getRenderEffect() {
 //		 findOre();
-		addOreIntoRenderer();
+//		addOreIntoRenderer();
+		doRenderUpdate();
 		
 	}
 	

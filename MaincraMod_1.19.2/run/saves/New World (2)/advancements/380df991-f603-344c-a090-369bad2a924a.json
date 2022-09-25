@@ -71,6 +71,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/misc/iron_ingot_from_blasting_iron_ore": {
+    "criteria": {
+      "has_iron_ore": "2022-09-21 17:36:31 -0400"
+    },
+    "done": true
+  },
   "minecraft:recipes/transportation/oak_boat": {
     "criteria": {
       "in_water": "2022-09-13 11:57:58 -0400"
@@ -86,6 +92,12 @@
   "minecraft:recipes/misc/gold_ingot_from_blasting_deepslate_gold_ore": {
     "criteria": {
       "has_deepslate_gold_ore": "2022-09-17 23:01:32 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_ingot_from_smelting_iron_ore": {
+    "criteria": {
+      "has_iron_ore": "2022-09-21 17:36:31 -0400"
     },
     "done": true
   },
@@ -128,6 +140,7 @@
   "minecraft:adventure/adventuring_time": {
     "criteria": {
       "minecraft:old_growth_pine_taiga": "2022-09-17 22:52:08 -0400",
+      "minecraft:wooded_badlands": "2022-09-20 15:41:24 -0400",
       "minecraft:beach": "2022-09-12 21:00:11 -0400",
       "minecraft:dark_forest": "2022-09-12 21:01:20 -0400",
       "minecraft:river": "2022-09-12 21:00:32 -0400",
