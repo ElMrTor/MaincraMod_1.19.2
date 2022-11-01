@@ -1,7 +1,6 @@
 package com.example.examplemod.MobTracker;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +14,8 @@ import com.example.examplemod.Renderer.Renderer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -51,6 +52,7 @@ public class MobTracker implements RenderEffect {
 		put(EntityType.PIGLIN, Color.GREEN);
 		put(EntityType.PIGLIN_BRUTE, Color.PINK);
 		put(EntityType.ZOMBIFIED_PIGLIN, Color.BLUE);
+		put(EntityType.PLAYER, Color.RED);
 	}};
 	
 	
@@ -97,18 +99,28 @@ public class MobTracker implements RenderEffect {
 		Minecraft mc = Minecraft.getInstance();
 		if (!isActive || mc.level == null || renderer == null)			
 			return;
-		LocalPlayer player = mc.player;		
+		doClearWhenNotInUse();
+		LocalPlayer player = mc.player;
+		Component pName = player.getName();
 		BlockPos startBPos = player.blockPosition().offset(DEFAULT_DISTANCE, DEFAULT_DISTANCE, DEFAULT_DISTANCE);
 		BlockPos endBPos = player.blockPosition().offset(-DEFAULT_DISTANCE, -DEFAULT_DISTANCE, -DEFAULT_DISTANCE);
 		AABB areaBox = new AABB(startBPos, endBPos);		
 		
 		List<LivingEntity> entityList = mc.level.getEntitiesOfClass(LivingEntity.class, areaBox);
-//		renderObjectList.clear();
 		currentUsedRenderObjects = 0;		
-		for (Entry<EntityType<? extends Entity>, List<AABB>> entry: filterEntities(entityList).entrySet()) {
+		
+		EntityRenderDispatcher entRend = mc.getEntityRenderDispatcher();
+//		for (LivingEntity entity: entityList) {
+//			 EntityRenderer<?> renderer = entRend.getRenderer(entity);
+//			 renderer.render(player, DEFAULT_DISTANCE, currentUsedRenderObjects, null, null, DEFAULT_DISTANCE);
+//		}
+		
+		
+		for (Entry<EntityType<? extends Entity>, List<AABB>> entry: filterEntities(entityList, pName).entrySet()) {
 			Color entityColor = ENTITY_TYPE_COLOR_MAP.getOrDefault(entry.getKey(), DEFAULT_MOB_MONSTER_COLOR);
 			if (entry.getKey().getCategory() == MobCategory.CREATURE)
-				entityColor = DEFAULT_MOB_CREATURE_COLOR;						
+				entityColor = DEFAULT_MOB_CREATURE_COLOR;
+			
 			RenderObject obj;
 			for (AABB bBox: entry.getValue()) {
 				if (currentUsedRenderObjects >= renderObjectList.size()) {
@@ -121,19 +133,18 @@ public class MobTracker implements RenderEffect {
 				obj.updateData(bBox);
 				obj.setColor(entityColor);				
 				currentUsedRenderObjects++;
-//				renderer.addRenderList(entityColor, Renderer.getVertexListFromAABB(bBox));
 			}
 		}
 	}
 
-	public Map<EntityType<? extends Entity>, List<AABB>> filterEntities(List<LivingEntity> entityList) {
+	public Map<EntityType<? extends Entity>, List<AABB>> filterEntities(List<LivingEntity> entityList, Component playerName) {
 		Map<EntityType<? extends Entity>, List<AABB>> entityMap = new HashMap<>();
 		for (LivingEntity lEntity: entityList) {
-			if (lEntity.getType().getCategory() == MobCategory.MONSTER || lEntity.getType().getCategory() == MobCategory.CREATURE) {			
+			if (lEntity.getType().getCategory() == MobCategory.MONSTER || lEntity.getType().getCategory() == MobCategory.CREATURE || EntityType.PLAYER.equals(lEntity.getType())) {			
 				if (!entityMap.containsKey(lEntity.getType()))
 					entityMap.put(lEntity.getType(), new LinkedList<>());				
-				
-				entityMap.get(lEntity.getType()).add(lEntity.getBoundingBox());
+				if (!lEntity.getName().equals(playerName))
+					entityMap.get(lEntity.getType()).add(lEntity.getBoundingBox());
 			}
 		}
 		return entityMap;
@@ -157,5 +168,10 @@ public class MobTracker implements RenderEffect {
 		return renderObjectList;
 	}
 	
+	private void doClearWhenNotInUse() {
+		if (!isActive && renderer != null && !renderer.isActive()) {
+			renderObjectList.clear();
+		}
+	}
 
 }

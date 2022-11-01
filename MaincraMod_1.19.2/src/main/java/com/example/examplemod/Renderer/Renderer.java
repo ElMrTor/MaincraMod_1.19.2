@@ -27,6 +27,8 @@ import com.mojang.math.Matrix4f;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
@@ -75,6 +77,10 @@ public class Renderer {
 		effectsToRenderList.add(this.manager.mobTracker);
 		effectsToRenderList.add(this.manager.oreFinder);	
 		renderObjectList = new ArrayList<List<RenderObject>>();
+	}
+	
+	public boolean isActive() {
+		return isActive;
 	}
 	
 	public void addRenderEffectClass(RenderEffect rEffect) {
