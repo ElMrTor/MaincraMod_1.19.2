@@ -30,8 +30,9 @@ public class MobTracker implements RenderEffect {
 	private List<RenderObject> renderObjectList;
 	private boolean isActive;	
 	private Renderer renderer;
-	public final Color DEFAULT_MOB_MONSTER_COLOR = Color.RED;
-	public final Color DEFAULT_MOB_CREATURE_COLOR = Color.PINK;
+	public static final Color DEFAULT_MOB_MONSTER_COLOR = Color.RED;
+	public static final Color DEFAULT_MOB_CREATURE_COLOR = Color.PINK;
+	public static final Color COLOR_PURPLE = new Color(139, 0, 139);
 	private int currentUsedRenderObjects;
 	
 	private final Map<EntityType<? extends Entity>, Color> ENTITY_TYPE_COLOR_MAP = new HashMap<>() {{
@@ -119,7 +120,21 @@ public class MobTracker implements RenderEffect {
 					obj = renderObjectList.get(currentUsedRenderObjects);
 				obj.enableRender();
 				obj.updateData(bBox);
-				obj.setColor(entityColor);				
+				obj.setColor(entityColor);
+				if (entry.getKey().getCategory() == MobCategory.MISC) {
+					if (entry.getKey().equals(EntityType.VILLAGER)) {
+						obj.setFillColor(COLOR_PURPLE);
+						obj.setOutlineColor(Color.YELLOW);
+					}
+					else if (entry.getKey().equals(EntityType.IRON_GOLEM)) {
+						obj.setFillColor(Color.WHITE);
+						obj.setOutlineColor(Color.GREEN);
+					}
+					else if (entry.getKey().equals(EntityType.PLAYER)) {
+						obj.setFillColor(Color.RED);
+						obj.setOutlineColor(Color.GREEN);
+					}
+				}
 				currentUsedRenderObjects++;
 //				renderer.addRenderList(entityColor, Renderer.getVertexListFromAABB(bBox));
 			}
@@ -129,7 +144,7 @@ public class MobTracker implements RenderEffect {
 	public Map<EntityType<? extends Entity>, List<AABB>> filterEntities(List<LivingEntity> entityList) {
 		Map<EntityType<? extends Entity>, List<AABB>> entityMap = new HashMap<>();
 		for (LivingEntity lEntity: entityList) {
-			if (lEntity.getType().getCategory() == MobCategory.MONSTER || lEntity.getType().getCategory() == MobCategory.CREATURE) {			
+			if (lEntity.getType().getCategory() == MobCategory.MONSTER || lEntity.getType().getCategory() == MobCategory.CREATURE || lEntity.getType().getCategory() == MobCategory.MISC) {			
 				if (!entityMap.containsKey(lEntity.getType()))
 					entityMap.put(lEntity.getType(), new LinkedList<>());				
 				
