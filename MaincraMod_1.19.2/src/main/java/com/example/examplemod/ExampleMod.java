@@ -69,6 +69,7 @@ public class ExampleMod
         MinecraftForge.EVENT_BUS.register(managerInstance.mobTracker);        
         MinecraftForge.EVENT_BUS.register(managerInstance.autoAttack);
         MinecraftForge.EVENT_BUS.register(managerInstance.renderer);
+        MinecraftForge.EVENT_BUS.register(managerInstance.fly);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

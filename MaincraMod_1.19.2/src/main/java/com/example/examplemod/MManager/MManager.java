@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.glfw.GLFW;
 
+import com.example.examplemod.Fly.Fly;
 import com.example.examplemod.MobTracker.MobTracker;
 import com.example.examplemod.OreFinder.OreFinder;
 import com.example.examplemod.Renderer.Renderer;
@@ -28,12 +29,14 @@ public class MManager {
 	public Renderer renderer;
 	public MobTracker mobTracker;
 	public AutoAttacker autoAttack;
+	public Fly fly;
 	
 	public MManager() {
 		pressedKeys = new HashMap<>();
 		oreFinder = new OreFinder();		
 		mobTracker = new MobTracker();
 		autoAttack = new AutoAttacker();
+		fly = new Fly();
 		renderer = new Renderer(this);
 		oreFinder.setRenderer(renderer);
 		mobTracker.setRenderer(renderer);
@@ -48,8 +51,8 @@ public class MManager {
 			return;
 		}		
 		if (event.getKey() == KeyEvent.VK_R) {
-			// Do something
-			LOG.info("Detected key press!");
+//			 Do something
+//			LOG.info("Detected key press!");
 			autoAttack.attackAllNearbyMonsters();
 			autoAttack.clearDumbGrass();
 		} else if (event.getKey() == KeyEvent.VK_EQUALS && isAltPressed(event)) {
@@ -57,8 +60,9 @@ public class MManager {
 		} else if (event.getKey() == KeyEvent.VK_P && isAltPressed(event)) {
 			mobTracker.toggle();
 		} else if (event.getKey() == KeyEvent.VK_O && isAltPressed(event)) {
-			oreFinder.toggle();
-			
+			oreFinder.toggle();			
+		} else if (event.getKey() == KeyEvent.VK_L) {
+			fly.toggle();
 		}
 //		Log.info("Detected key press: {}", event.toString());
 		
